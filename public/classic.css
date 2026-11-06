@@ -335,3 +335,9 @@ html[data-theme="classic"] {
 
   .hint-panel p { font-weight: 400; }
 }
+
+html[data-theme="classic"] .button--outline {
+  border-color: var(--line);
+  background: var(--white);
+  color: var(--ink);
+}

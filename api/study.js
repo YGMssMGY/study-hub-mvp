@@ -1,5 +1,6 @@
 import { AppError, equalSecret } from '../lib/security.mjs';
 import { analyze, generate, grade, gradeDemo } from '../lib/study.mjs';
+import { tutorChat, tutorQuiz } from '../lib/tutor.mjs';
 import { environment } from '../lib/config.mjs';
 
 const windows = new Map();
@@ -43,6 +44,8 @@ export default async function handler(req, res, values) {
     if (body.action === 'generate') return send(200, await generate(body, env));
     if (body.action === 'grade') return send(200, await grade(body, env));
     if (body.action === 'grade-demo') return send(200, await gradeDemo(body, env));
+    if (body.action === 'tutor-chat') return send(200, await tutorChat(body, env));
+    if (body.action === 'tutor-quiz') return send(200, await tutorQuiz(body, env));
     throw new AppError('Unknown study action.');
   } catch (error) {
     const known = error instanceof AppError;

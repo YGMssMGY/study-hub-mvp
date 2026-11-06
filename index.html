@@ -4,19 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Study Hub</title>
-  <meta name="description" content="Every study resource for your class, in one place.">
+  <meta name="description" content="All your class stuff, folded into one guide.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="wordmark" href="index.html"><span class="wordmark-mark" aria-hidden="true">S</span>Study Hub</a>
+      <a class="wordmark" href="index.html">
+        <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#faf7f2"/><path d="M34 0 H36 A12 12 0 0 1 48 12 V14 Z" fill="#ffcc00"/><rect x="11" y="15" width="20" height="3.5" rx="1.75" fill="#990000"/><rect x="11" y="22.25" width="26" height="3.5" rx="1.75" fill="#990000"/><rect x="11" y="29.5" width="14" height="3.5" rx="1.75" fill="#990000"/></svg>
+        Study Hub
+      </a>
       <nav class="site-nav" aria-label="Main">
         <a href="#classes">Classes</a>
         <a href="#how-it-works">How it works</a>
+        <a class="nav-cta" href="courses/econ351-hill.html">Start studying</a>
       </nav>
     </div>
   </header>
@@ -24,70 +28,107 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div>
-          <p class="eyebrow">For USC students</p>
-          <h1>Every study resource for your class, in <span class="highlight">one place</span>.</h1>
-          <p class="lead">Slides, practice problems and past exams are scattered across teachers, courses and platforms. Study Hub turns them into topic guides built around your professor.</p>
-          <a class="button" href="#classes">Choose your class <span aria-hidden="true">→</span></a>
-          <p class="hero-note">Starting with ECON 351x · Fall 2026</p>
+        <div class="hero-copy">
+          <p class="badge"><span class="badge-dot" aria-hidden="true"></span>Hey, ECON 351x · Exam 1 is coming up</p>
+          <h1>All your class stuff, folded into <span class="scribble">one guide.<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 4, 120 22, 180 10 S 270 8, 296 14"/></svg></span></h1>
+          <div class="sticker-row">
+            <span class="sticker">bye-bye, 12 open tabs</span>
+            <span>Slides, question banks, past exams. One spot.</span>
+          </div>
+          <p class="lead">Study Hub turns your professor's files into bite-size topic guides. Read the gist, open the details when you need them, jump straight to the slide.</p>
+          <div class="hero-actions">
+            <a class="button" href="#classes">Find my class <span aria-hidden="true">→</span></a>
+            <a class="button button--ghost" href="#how-it-works">See how it works</a>
+          </div>
         </div>
 
-        <aside class="guide-preview" aria-label="Example topic guide">
-          <div class="guide-preview-head">
-            <h2>Elasticity</h2>
-            <span class="pill">ECON 351x · Exam 1</span>
-          </div>
-          <details open>
-            <summary>Overview</summary>
-            <p>How much quantity demanded responds when price changes. Elastic goods react a lot; inelastic goods barely move.</p>
-          </details>
-          <details>
-            <summary>Key formula</summary>
-            <p><span class="formula">E<sub>d</sub> = %ΔQ<sub>d</sub> ÷ %ΔP</span></p>
-          </details>
-          <details>
-            <summary>Original sources</summary>
-            <p>Lecture slides: Elasticity · Practice set: Elasticity, with answers</p>
-          </details>
-          <details>
-            <summary>More help</summary>
-            <p>Short videos and extra practice picked for this topic.</p>
-          </details>
-        </aside>
+        <div class="hero-art">
+          <span class="file-chip file-chip--1" aria-hidden="true">Lecture slides.pdf</span>
+          <span class="file-chip file-chip--2" aria-hidden="true">Test 1 bank.docx</span>
+          <span class="file-chip file-chip--3" aria-hidden="true">Cheat sheet</span>
+          <span class="file-chip file-chip--4" aria-hidden="true">Practice video</span>
+
+          <aside class="guide-preview" aria-label="Example topic guide">
+            <div class="guide-preview-head">
+              <div>
+                <p>ECON 351x · Hill · Exam 1</p>
+                <h2>Elasticity</h2>
+              </div>
+              <span class="tag">Try it: tap a row</span>
+            </div>
+            <details open>
+              <summary>The gist</summary>
+              <p>How much people change what they buy when the price moves. Elastic: a lot. Inelastic: barely.</p>
+            </details>
+            <details>
+              <summary>Key formula</summary>
+              <p><span class="formula">E<sub>d</sub> = %ΔQ<sub>d</sub> ÷ %ΔP</span> Bigger than 1 (ignoring the sign) means elastic.</p>
+            </details>
+            <details>
+              <summary>Where it came from</summary>
+              <p>Prof. Hill's elasticity slides and the Test 1 question bank, linked straight to the page.</p>
+            </details>
+            <details>
+              <summary>Still stuck?</summary>
+              <p>A short explainer video and an extra problem set picked for this topic.</p>
+            </details>
+          </aside>
+        </div>
       </div>
     </section>
 
+    <div class="stat-strip">
+      <div class="container">
+        <ul>
+          <li><strong>2</strong>professors, each with their own guides</li>
+          <li><strong>12</strong>topics across three exams</li>
+          <li><strong>1</strong>place for slides, sets and past exams</li>
+        </ul>
+      </div>
+    </div>
+
     <section class="section" id="classes">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Classes</p>
-          <h2>Pick your section</h2>
-          <p class="lead">ECON 351x is taught by two professors. Choose yours so every guide matches what they emphasize.</p>
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Classes</p>
+            <h2>Pick your section</h2>
+            <p class="lead">ECON 351x is taught by two professors. Choose yours so every guide matches what they emphasize.</p>
+          </div>
+          <p class="meta">More classes after the pilot.</p>
         </div>
 
         <div class="card-grid">
           <a class="card" href="courses/econ351-hill.html">
-            <span class="avatar" aria-hidden="true">MH</span>
-            <p class="eyebrow">ECON 351x · Microeconomics</p>
-            <h3>Prof. Matthew Hill</h3>
-            <p class="meta">Slides, question banks and answer keys for all three exams.</p>
-            <ul class="stats">
-              <li>12 topics</li>
-              <li>3 exams</li>
-            </ul>
-            <span class="card-cta">Open class →</span>
+            <div class="card-top">
+              <span class="avatar" aria-hidden="true">MH</span>
+              <span class="tag">Pilot section</span>
+            </div>
+            <div class="card-body">
+              <p class="eyebrow">ECON 351x · Microeconomics</p>
+              <h3>Prof. Matthew Hill</h3>
+              <p class="meta">Slides, question banks and answer keys for all three exams.</p>
+            </div>
+            <div class="card-foot">
+              <span>12 topics · 3 exams</span>
+              <span class="card-cta">Open class →</span>
+            </div>
           </a>
 
           <a class="card" href="courses/econ351-kaplin.html">
-            <span class="avatar" aria-hidden="true">K</span>
-            <p class="eyebrow">ECON 351x · Microeconomics</p>
-            <h3>Prof. Kaplin</h3>
-            <p class="meta">Slide decks, extra practice sets and practice exams.</p>
-            <ul class="stats">
-              <li>12 topics</li>
-              <li>3 exams</li>
-            </ul>
-            <span class="card-cta">Open class →</span>
+            <div class="card-top">
+              <span class="avatar avatar--ink" aria-hidden="true">K</span>
+              <span class="tag tag--muted">Coming next</span>
+            </div>
+            <div class="card-body">
+              <p class="eyebrow">ECON 351x · Microeconomics</p>
+              <h3>Prof. Kaplin</h3>
+              <p class="meta">Slide decks, extra practice sets and practice exams.</p>
+            </div>
+            <div class="card-foot">
+              <span>12 topics · 3 exams</span>
+              <span class="card-cta">Open class →</span>
+            </div>
           </a>
         </div>
       </div>
@@ -97,7 +138,7 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">How it works</p>
-          <h2>From scattered files to one guide</h2>
+          <h2>From scattered files to <span class="scribble scribble--plain">one guide<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 4, 120 22, 180 10 S 270 8, 296 14"/></svg></span></h2>
         </div>
         <ol class="steps">
           <li>
@@ -106,13 +147,25 @@
           </li>
           <li>
             <h3>Open a topic guide</h3>
-            <p>Read a short overview, then expand the details when you need them.</p>
+            <p>Read the gist first, then unfold the details when you need them.</p>
           </li>
           <li>
             <h3>Go to the source</h3>
-            <p>Jump to the original slides and practice problems, or extra resources for more help.</p>
+            <p>Jump to the exact slide or practice problem, or extra help picked for that topic.</p>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Exam 1 is closer than it looks.</h2>
+            <p>Start with the four topics it covers, each with sources attached.</p>
+          </div>
+          <a class="button" href="courses/econ351-hill.html">Open ECON 351x</a>
+        </div>
       </div>
     </section>
   </main>

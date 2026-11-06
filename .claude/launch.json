@@ -4,8 +4,14 @@
     {
       "name": "study-hub",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8000"],
+      "runtimeArgs": ["-m", "http.server", "8000", "--directory", "public"],
       "port": 8000
+    },
+    {
+      "name": "study-hub-node",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 3000
     }
   ]
 }

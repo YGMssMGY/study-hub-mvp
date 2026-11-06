@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#990000">
+  <meta name="description" content="Upload your professor's files and get topic notes, practice questions, and review notes.">
+  <title>Study session · Study Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/study/study.css">
+  <script type="module" src="/study/app.js"></script>
+</head>
+<body class="study-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="/">
+        <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#faf7f2"/><path d="M34 0 H36 A12 12 0 0 1 48 12 V14 Z" fill="#ffcc00"/><rect x="11" y="15" width="20" height="3.5" rx="1.75" fill="#990000"/><rect x="11" y="22.25" width="26" height="3.5" rx="1.75" fill="#990000"/><rect x="11" y="29.5" width="14" height="3.5" rx="1.75" fill="#990000"/></svg>
+        Study Hub
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="/#classes">Classes</a>
+        <span id="connection-label" class="connection-label"></span>
+        <button class="nav-cta" id="settings-button">Settings</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="study-band">
+    <div class="container">
+      <nav class="study-crumb" aria-label="Breadcrumb"><a href="/#classes">Classes</a><span aria-hidden="true">/</span><a id="crumb-course" href="/#classes" hidden></a><span id="crumb-course-sep" aria-hidden="true" hidden>/</span><span aria-current="page">Study session</span></nav>
+      <h1><span class="scribble scribble--plain">Study session<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 4, 120 22, 180 10 S 270 8, 296 14"/></svg></span></h1>
+      <p>Upload your professor's files. Get a topic map, notes and practice questions. What you master folds away.</p>
+    </div>
+  </section>
+
+  <main id="main" class="study-app"></main>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="settings-dialog" class="study-dialog" aria-labelledby="settings-title">
+    <form method="dialog" class="dialog-header"><h2 id="settings-title">Settings</h2><button aria-label="Close settings" class="icon-button">×</button></form>
+    <p id="settings-status" class="muted"></p>
+    <div id="access-settings"><label class="field-label" for="access-code">Study access code</label>
+    <input type="password" id="access-code" autocomplete="off" placeholder="Access code">
+    <p class="field-help">Required if AI access is protected.</p>
+    <button id="save-settings" class="button primary">Save</button></div>
+    <div class="settings-divider"></div>
+    <p class="small muted">Progress is saved in this browser. Uploaded files are processed by AI and aren’t stored by this app.</p>
+    <button id="download-session" class="button secondary">Download backup <span>↓</span></button>
+    <button id="restore-session" class="text-button full-width">Restore backup</button>
+    <input type="file" id="backup-input" accept="application/json,.json" hidden>
+    <button id="clear-progress" class="text-button danger full-width">Clear progress</button>
+  </dialog>
+</body>
+</html>

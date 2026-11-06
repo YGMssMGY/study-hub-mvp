@@ -8,19 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="wordmark" href="index.html">
+      <a class="wordmark" href="/">
         <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#faf7f2"/><path d="M34 0 H36 A12 12 0 0 1 48 12 V14 Z" fill="#ffcc00"/><rect x="11" y="15" width="20" height="3.5" rx="1.75" fill="#990000"/><rect x="11" y="22.25" width="26" height="3.5" rx="1.75" fill="#990000"/><rect x="11" y="29.5" width="14" height="3.5" rx="1.75" fill="#990000"/></svg>
         Study Hub
       </a>
       <nav class="site-nav" aria-label="Main">
         <a href="#classes">Classes</a>
         <a href="#how-it-works">How it works</a>
-        <a class="nav-cta" href="courses/econ351-hill.html">Start studying</a>
+        <a href="#study-tool">Study tool</a>
+        <a class="nav-cta" href="/study/">Start studying</a>
       </nav>
     </div>
   </header>
@@ -35,10 +36,10 @@
             <span class="sticker">bye-bye, 12 open tabs</span>
             <span>Slides, question banks, past exams. One spot.</span>
           </div>
-          <p class="lead">Study Hub turns your professor's files into bite-size topic guides. Read the gist, open the details when you need them, jump straight to the slide.</p>
+          <p class="lead">Study Hub turns your professor's files into topic notes and practice questions. Read the gist, practice what you don't know yet, and jump straight back to the slide.</p>
           <div class="hero-actions">
             <a class="button" href="#classes">Find my class <span aria-hidden="true">→</span></a>
-            <a class="button button--ghost" href="#how-it-works">See how it works</a>
+            <a class="button button--ghost" href="/study/">Try the study tool</a>
           </div>
         </div>
 
@@ -99,7 +100,7 @@
         </div>
 
         <div class="card-grid">
-          <a class="card" href="courses/econ351-hill.html">
+          <a class="card" href="/courses/econ351-hill.html">
             <div class="card-top">
               <span class="avatar" aria-hidden="true">MH</span>
               <span class="tag">Pilot section</span>
@@ -115,10 +116,10 @@
             </div>
           </a>
 
-          <a class="card" href="courses/econ351-kaplin.html">
+          <a class="card" href="/courses/econ351-kaplin.html">
             <div class="card-top">
               <span class="avatar avatar--ink" aria-hidden="true">K</span>
-              <span class="tag tag--muted">Coming next</span>
+              <span class="tag">Study tool ready</span>
             </div>
             <div class="card-body">
               <p class="eyebrow">ECON 351x · Microeconomics</p>
@@ -146,25 +147,47 @@
             <p>Choose your course and professor so everything matches what they teach.</p>
           </li>
           <li>
-            <h3>Open a topic guide</h3>
-            <p>Read the gist first, then unfold the details when you need them.</p>
+            <h3>Upload their files</h3>
+            <p>Drop in the slides, question bank or notes. You get a topic map, short notes and practice questions.</p>
           </li>
           <li>
-            <h3>Go to the source</h3>
-            <p>Jump to the exact slide or practice problem, or extra help picked for that topic.</p>
+            <h3>Practice until it folds away</h3>
+            <p>Two correct answers per concept and it's done. What you miss lands in your review notes, with the source.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="study-tool">
+      <div class="container">
+        <div class="tool-panel">
+          <div class="tool-copy">
+            <p class="eyebrow">Study tool</p>
+            <h2>Turn a lecture deck into practice in a minute.</h2>
+            <p class="lead">Upload up to four PDF, PPTX, TXT or MD files (3 MB total). Study Hub reads them and builds a session around what's actually in them.</p>
+            <div class="hero-actions">
+              <a class="button" href="/study/">Start a study session <span aria-hidden="true">→</span></a>
+            </div>
+            <p class="meta">Progress stays in your browser. Files are processed by AI and not stored.</p>
+          </div>
+          <ul class="tool-list">
+            <li><strong>Topic map and notes</strong>Chapters, sections and concepts in the order the files teach them.</li>
+            <li><strong>Practice questions</strong>Multiple choice and written, pulled from the files or generated from them.</li>
+            <li><strong>Feedback that cites</strong>Written answers are checked by AI and every concept points back to its file and page.</li>
+            <li><strong>Mastery that folds</strong>Two correct answers per concept and it drops off your to-do list.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
       <div class="container">
         <div class="cta-band">
           <div>
             <h2>Exam 1 is closer than it looks.</h2>
-            <p>Start with the four topics it covers, each with sources attached.</p>
+            <p>Upload the Exam 1 slides and start practicing the topics it covers.</p>
           </div>
-          <a class="button" href="courses/econ351-hill.html">Open ECON 351x</a>
+          <a class="button" href="/study/">Start a study session</a>
         </div>
       </div>
     </section>

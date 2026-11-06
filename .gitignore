@@ -1,1 +1,9 @@
 .DS_Store
+node_modules/
+.env*
+!.env.example
+.vercel/
+coverage/
+dist/
+worker/index.js
+*.zip

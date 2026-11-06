@@ -1,0 +1,337 @@
+/* "Study tool" style for the site pages: the study tool's plain look (Arial, white, hairlines, square corners). */
+
+html[data-theme="classic"] {
+  --cardinal: #990000;
+  --ink: #252522;
+  --gray: #77776f;
+  --light: #fafaf8;
+  --line: #deded7;
+  --white: #ffffff;
+  --serif: Arial, Helvetica, sans-serif;
+  --sans: Arial, Helvetica, sans-serif;
+  --radius: 0;
+  --border: 1px solid var(--line);
+  --pop: none;
+  --pop-deep: none;
+
+  body {
+    background: var(--white);
+    font-size: 14px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+
+  h1, h2, h3 {
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    line-height: 1.25;
+  }
+
+  h1 { font-size: clamp(2rem, 4vw, 3rem); }
+  h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+  h3 { font-size: 1.05rem; }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--cardinal);
+  }
+
+  /* Header and hero sit on white instead of cardinal */
+
+  .site-header {
+    background: var(--white);
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wordmark {
+    color: var(--ink);
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .site-nav a {
+    color: var(--ink);
+    font-size: 12px;
+  }
+
+  .site-nav .nav-cta {
+    min-height: 36px;
+    padding: 0 16px;
+    border-radius: 0;
+    background: var(--cardinal);
+    color: var(--white);
+    font-weight: 500;
+    box-shadow: none;
+  }
+
+  .hero,
+  .page-hero {
+    background: var(--white);
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero { padding: 64px 0; }
+  .page-hero { padding: 16px 0 40px; }
+
+  .hero .lead,
+  .page-hero .lead,
+  .sticker-row {
+    color: var(--gray);
+  }
+
+  .page-hero .lead a {
+    color: var(--cardinal);
+    font-weight: 500;
+  }
+
+  .badge {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--light);
+    color: var(--gray);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .scribble { color: inherit; }
+  .scribble svg { display: none; }
+
+  .sticker,
+  .tag {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--light);
+    color: var(--gray);
+    font-size: 11px;
+    font-weight: 500;
+    box-shadow: none;
+  }
+
+  .page-hero-tags .tag {
+    background: var(--light);
+    color: var(--gray);
+  }
+
+  .back-link { color: var(--gray); }
+  .back-link:hover { color: var(--cardinal); }
+
+  .button {
+    min-height: 42px;
+    padding: 0 20px;
+    border: 1px solid var(--cardinal);
+    border-radius: 0;
+    background: var(--cardinal);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: none;
+  }
+
+  .button:hover {
+    transform: none;
+    background: #7c0000;
+  }
+
+  .button--ghost {
+    border-color: var(--line);
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  .button--ghost:hover {
+    background: var(--light);
+  }
+
+  /* Hero preview */
+
+  .file-chip {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: none;
+  }
+
+  .file-chip::before {
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+  }
+
+  .guide-preview {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--white);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .guide-preview-head h2 { font-weight: 500; }
+
+  .guide-preview summary { font-weight: 500; }
+
+  .formula {
+    border-radius: 0;
+    background: var(--light);
+    font-weight: 500;
+  }
+
+  /* Sections */
+
+  .stat-strip { margin-top: 32px; }
+
+  .stat-strip ul {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .stat-strip strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .section { padding: 72px 0; }
+  .section--white { background: var(--light); }
+  .section--tight { padding-top: 0; }
+
+  .eyebrow {
+    color: var(--gray);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .card,
+  .tool-panel,
+  .cta-band,
+  .study-card,
+  .topic-card,
+  .source-panel,
+  .hint-panel {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .card:hover,
+  .topic-card:hover,
+  .study-card:hover {
+    transform: none;
+    border-color: #c8c8bd;
+    box-shadow: none;
+  }
+
+  .avatar {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--light);
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .card h3 { font-weight: 500; }
+
+  .card-foot { border-top-width: 1px; }
+
+  .card-cta,
+  .study-card-cta {
+    font-weight: 500;
+  }
+
+  .steps li::before {
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .steps li { border-top: 1px solid var(--line); }
+
+  .tool-list li,
+  .tool-list li:nth-child(2) {
+    border-radius: 0;
+    background: var(--light);
+  }
+
+  .cta-band {
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  .cta-band p { color: var(--gray); }
+
+  /* Course page */
+
+  .exam-tab {
+    min-height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .exam-tab:hover {
+    border-color: #c8c8bd;
+    background: var(--light);
+    color: var(--ink);
+    box-shadow: none;
+  }
+
+  .study-card {
+    background: var(--light);
+    color: var(--ink);
+  }
+
+  .study-card-kicker { color: var(--cardinal); font-weight: 500; }
+  .study-card-title { font-weight: 500; letter-spacing: -0.4px; }
+  .study-card-text { color: var(--gray); }
+
+  .study-card-cta {
+    min-height: 42px;
+    border-radius: 0;
+    background: var(--cardinal);
+    color: var(--white);
+  }
+
+  .exam-group-head h2 { font-weight: 500; }
+
+  .topic-num {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--light);
+    color: var(--gray);
+    font-weight: 500;
+  }
+
+  .topic-title { font-weight: 500; }
+
+  .topic-badge {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--white);
+    color: var(--cardinal);
+    font-weight: 500;
+  }
+
+  .source-panel li a {
+    border-bottom-width: 1px;
+    font-weight: 500;
+  }
+
+  .source-chip { border-radius: 0; }
+
+  .hint-panel {
+    background: var(--light);
+  }
+
+  .hint-panel p { font-weight: 400; }
+}

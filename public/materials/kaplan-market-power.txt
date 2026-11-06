@@ -1,0 +1,10 @@
+Ch 7 · Market power and monopoly · ECON 351x, Prof. Erin Kaplan (Exam 2)
+Study Hub topic brief. Source: Kaplan Ch 7 slides; Extra Practice 7.
+
+- Market power = the ability to affect price. Monopoly (one seller), monopsony (one buyer).
+- Linear demand P = a − bQ → MR = a − 2bQ. Revenue peaks where demand is unit elastic (MR = 0); a monopolist never produces on the inelastic part.
+- Profit max: MR = MC. Lerner index (P − MC)/P = −1/E.
+- Markups (P/MC) rose from 1.21 in 1980 to 1.61 in 2016 (De Loecker, Eeckhout & Unger).
+- Example (Luxottica): Q = 150 − P, C = 0.25Q² + 1000 → MR = 150 − 2Q = 0.5Q → Q = 60, P = $90, profit = $3,500, Lerner = 2/3. Competitive Q = 100, P = $50, DWL = ½ × 40 × 60 = $1,200.
+- Barriers to entry: control of a key resource, government (patents, licenses), network externalities (Uber), natural monopoly.
+- Natural monopoly regulation: subsidize production at the efficient quantity, or cap price at average cost (P = ATC).

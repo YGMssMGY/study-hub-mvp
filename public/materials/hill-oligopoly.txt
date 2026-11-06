@@ -1,0 +1,12 @@
+Oligopoly: Bertrand and Cournot · ECON 351x, Prof. Matthew Hill (Exam 2)
+Study Hub topic brief. Source: Hill Topics for Exam 2; Oligopoly slides; Oligopoly practice set.
+
+- Bertrand (price competition, identical products): price falls to P = MC, the same as perfect competition.
+- Cournot (quantity competition) with P = A − bQ and identical MC = c: each firm's MR_i = A − 2b·q_i − b·q_j. The symmetric solution is q = (A − c)/(3b) per firm and Q = 2(A − c)/(3b).
+- Profit per firm = (P − MC) × q when there is no fixed cost.
+- Ranking with the same demand and cost: Price: Monopoly > Cournot > Perfect competition = Bertrand. Quantity: Perfect competition > Cournot > Monopoly.
+- Collusion (e.g. a price-fixing case) pushes oligopolists toward the monopoly outcome.
+
+Practice example
+P = 100 − Q, MC = 10. Cournot: q = (100 − 10)/3 = 30 each, Q = 60, P = 40, profit = (40 − 10) × 30 = 900 each.
+Bertrand: P = 10, Q = 90.

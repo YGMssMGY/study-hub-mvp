@@ -1,0 +1,158 @@
+{
+  "hill-consumer-choice": {
+    "title": "Consumer choice and markets",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-consumer-choice.txt"
+  },
+  "hill-supply-demand": {
+    "title": "Supply and demand",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-supply-demand.txt"
+  },
+  "hill-elasticity": {
+    "title": "Elasticity",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-elasticity.txt"
+  },
+  "hill-equilibrium": {
+    "title": "Equilibrium, surplus and efficiency",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-equilibrium.txt"
+  },
+  "hill-price-controls": {
+    "title": "Price floors and ceilings",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-price-controls.txt"
+  },
+  "hill-perfect-competition": {
+    "title": "Costs and perfect competition",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-perfect-competition.txt"
+  },
+  "hill-monopoly": {
+    "title": "Monopoly",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-monopoly.txt"
+  },
+  "hill-monopolistic-competition": {
+    "title": "Monopolistic competition",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-monopolistic-competition.txt"
+  },
+  "hill-oligopoly": {
+    "title": "Oligopoly: Bertrand and Cournot",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-oligopoly.txt"
+  },
+  "hill-price-discrimination": {
+    "title": "Price discrimination",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-price-discrimination.txt"
+  },
+  "hill-externalities": {
+    "title": "Externalities",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-externalities.txt"
+  },
+  "hill-public-goods": {
+    "title": "Public goods and common resources",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-public-goods.txt"
+  },
+  "hill-taxes": {
+    "title": "Taxes and subsidies",
+    "section": "ECON 351x · Hill",
+    "course": "/courses/econ351-hill.html",
+    "file": "/materials/hill-taxes.txt"
+  },
+  "kaplan-rational-choice": {
+    "title": "Ch 1 · Rational choice and key ideas",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-rational-choice.txt"
+  },
+  "kaplan-production": {
+    "title": "Ch 3 · Production, cost and profit",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-production.txt"
+  },
+  "kaplan-demand": {
+    "title": "Ch 4 · Consumer choice and demand",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-demand.txt"
+  },
+  "kaplan-equilibrium": {
+    "title": "Ch 5.1 · Market equilibrium",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-equilibrium.txt"
+  },
+  "kaplan-regulation": {
+    "title": "Ch 5.2 · Price controls, taxes and subsidies",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-regulation.txt"
+  },
+  "kaplan-externalities": {
+    "title": "Ch 6 · Externalities and public goods",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-externalities.txt"
+  },
+  "kaplan-market-power": {
+    "title": "Ch 7 · Market power and monopoly",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-market-power.txt"
+  },
+  "kaplan-pricing": {
+    "title": "Ch 8 · Pricing strategies",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-pricing.txt"
+  },
+  "kaplan-monopolistic-competition": {
+    "title": "Monopolistic competition",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-monopolistic-competition.txt"
+  },
+  "kaplan-uncertainty": {
+    "title": "Ch 9 · Uncertainty",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-uncertainty.txt"
+  },
+  "kaplan-game-theory": {
+    "title": "Ch 10–11 · Game theory and strategic competition",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-game-theory.txt"
+  },
+  "kaplan-asymmetric-info": {
+    "title": "Ch 12 · Asymmetric information",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-asymmetric-info.txt"
+  },
+  "kaplan-incentives": {
+    "title": "Ch 13 · Incentives and contracts",
+    "section": "ECON 351x · Kaplan",
+    "course": "/courses/econ351-kaplan.html",
+    "file": "/materials/kaplan-incentives.txt"
+  }
+}

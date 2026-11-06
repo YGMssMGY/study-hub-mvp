@@ -1,0 +1,9 @@
+Public goods and common resources · ECON 351x, Prof. Matthew Hill (Exam 3)
+Study Hub topic brief. Source: Hill Types of Goods slides; Exam 3 Public Goods & Common Resources practice set.
+
+Classify goods by two questions: is it rival (my use leaves less for you)? Is it excludable (can non-payers be kept out)?
+- Private goods: rival and excludable (a sandwich).
+- Club goods: non-rival and excludable (streaming service, toll road without congestion).
+- Common resources: rival and non-excludable (fish in the ocean). Problem: the tragedy of the commons, overuse. Fixes: quotas, property rights, community rules.
+- Public goods: non-rival and non-excludable (national defense, fireworks). Problem: free riding, so private markets undersupply them. Fixes: government provision, subsidies.
+- The efficient amount of a public good is where the SUM of everyone's marginal benefits equals marginal cost.

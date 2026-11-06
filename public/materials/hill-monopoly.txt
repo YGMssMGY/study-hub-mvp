@@ -1,0 +1,13 @@
+Monopoly · ECON 351x, Prof. Matthew Hill (Exam 2)
+Study Hub topic brief. Source: Hill Topics for Exam 2; Monopoly slides; Monopoly practice set.
+
+- MR ≠ P. For linear demand P = a − bQ, MR = a − 2bQ.
+- Revenue-maximizing quantity: MR = 0. A monopolist always operates on the elastic part of demand.
+- Profit max: MR = MC, then read the price off demand. Profit = TR − TC.
+- Lerner index: (P − MC)/P = −1/E. More elastic demand → smaller markup.
+- Welfare: compare CS, PS and DWL with the competitive outcome (P = MC). DWL = ½ × (Qc − Qm) × [Pm − MC(Qm)].
+- Natural monopoly: high fixed cost, falling average cost. The fix Hill emphasizes: regulate with a price ceiling at the minimum feasible price. Pricing at average cost gives zero profit; pricing at MC is efficient but needs a subsidy.
+
+Practice example
+P = 100 − 2Q, TC = 20Q + 200. MR = 100 − 4Q = 20 → Qm = 20, Pm = 60. Competitive Qc: 100 − 2Q = 20 → 40.
+DWL = ½ × (40 − 20) × (60 − 20) = 400.

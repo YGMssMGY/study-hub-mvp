@@ -1,0 +1,10 @@
+Ch 4 · Consumer choice and demand · ECON 351x, Prof. Erin Kaplan (Exam 1)
+Study Hub topic brief. Source: Kaplan Ch 4 slides; Extra Practice 4.
+
+- Budget constraint: I = Px·x + Py·y, slope −Px/Py. Doubling income and all prices leaves it unchanged.
+- MRS = MUx/MUy (slope of the indifference curve). Optimal bundle: MRS = Px/Py, i.e. MUx/Px = MUy/Py.
+- Cobb-Douglas U = x^a y^(1−a): spend share a of income on x. Example: U = p^0.25 t^0.75, Pp = 4, Pt = 2, I = 48 → 3 pastries, 18 cups of tea.
+- Demand shifters: income (normal vs inferior goods), prices of substitutes and complements, tastes, population, expected future prices. The good's own price does not shift demand.
+- Elasticity E = %ΔQ/%ΔP; point form E = (P/Q)(dQ/dP). Linear demand is elastic at high prices and unit elastic at the midpoint (where revenue is highest).
+- Example: a bakery raises price from $2 to $3 and sales fall from 40 to 30; revenue rises from $80 to $90, so demand was inelastic (E = −25%/50% = −0.5).
+- Cross-price elasticity: positive for substitutes, negative for complements.

@@ -1,0 +1,10 @@
+Ch 10–11 · Game theory and strategic competition · ECON 351x, Prof. Erin Kaplan (Exam 3)
+Study Hub topic brief. Source: Kaplan Game Theory slides; Extra Practice 10.
+
+- Game theory studies behavior when each player's payoff depends on the others' choices.
+- Nash equilibrium: every player's strategy is a best response to the others'.
+- Finding pure-strategy equilibria in a payoff matrix: underline each player's best response; cells where both are underlined are Nash equilibria.
+- Every finite game has at least one equilibrium. 2x2 games: a dominant strategy → 1 pure equilibrium; otherwise either 0 pure + 1 mixed (matching pennies) or 2 pure + 1 mixed.
+- Mixed strategies: each player randomizes so the other is indifferent.
+- Sequential games: draw a game tree and solve by backward induction for the subgame perfect equilibrium. Moving first can change the outcome.
+- Class opener: guess 2/3 of the class average (iterated reasoning).

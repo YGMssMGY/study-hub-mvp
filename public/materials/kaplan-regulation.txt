@@ -1,0 +1,10 @@
+Ch 5.2 · Price controls, taxes and subsidies · ECON 351x, Prof. Erin Kaplan (Exam 2)
+Study Hub topic brief. Source: Kaplan Ch 5.2 slides; Extra Practice 5.2.
+
+- Competitive markets are efficient, so policies that change the outcome create DWL and move surplus around.
+- Price ceiling below equilibrium: shortage and DWL. Evidence: San Francisco rent control kept covered tenants in place but cut rental supply about 15% and raised citywide rents about 5% (Diamond, McQuade & Qian 2019).
+- Price floor above equilibrium: surplus. Minimum wage evidence is mixed (Card & Krueger found little job loss; Seattle's $15 study found more).
+- Example: labor demand L = 100 − 5w, supply L = 5w → w = $10, L = 50. A $15 minimum wage: demand 25, supply 75, unemployment 50, DWL = ½ × (50 − 25) × (15 − 5) = 125.
+- Taxes and subsidies drive a wedge: with a tax, P_buyer = P_seller + t; with a subsidy, P_seller = P_buyer + s. Legal incidence does not matter; the less elastic side bears more.
+- Soda taxes: 80–90% passed through to consumers.
+- Subsidy example: QD = 900 − 10P, QS = 40P, subsidy $5 → buyers pay $14, sellers get $19, Q = 760, cost to government $3,800.

@@ -1,0 +1,12 @@
+Price floors and ceilings · ECON 351x, Prof. Matthew Hill (Exam 1)
+Study Hub topic brief. Source: Hill Price Floors and Price Ceilings slides; Rent Control activity.
+
+- A price ceiling is a legal maximum price. It binds only if set below equilibrium, and then it causes a shortage (QD > QS) and deadweight loss.
+- A price floor is a legal minimum price. It binds only if set above equilibrium, and then it causes a surplus (QS > QD) and deadweight loss.
+- Only the smaller of QD and QS actually trades, which is where the DWL comes from.
+- Hill's examples: the 1585 Antwerp food price ceiling led to shortages; San Francisco rent control helped covered tenants stay but cut rental supply and raised average rents (Diamond, McQuade & Qian 2019).
+
+Practice example
+QD = 100 − 2P, QS = 2P − 20 (equilibrium P = 30, Q = 40).
+- Ceiling at P = 25: QS = 30, QD = 50 → shortage of 20. DWL = ½ × (40 − 30) × (35 − 25) = 50.
+- Floor at P = 35: QD = 30, QS = 50 → surplus of 20.

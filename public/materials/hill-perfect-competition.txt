@@ -1,0 +1,15 @@
+Costs and perfect competition · ECON 351x, Prof. Matthew Hill (Exam 2)
+Study Hub topic brief. Source: Hill Topics for Exam 2; Costs and Perfect Competition slides; Perfect Competition and Cost practice set.
+
+Costs
+- TC = VC + FC. MC = change in TC per unit. ATC = TC/q, AVC = VC/q. MC crosses ATC and AVC at their minimums.
+- Economic profit counts opportunity costs (the owner's time, the return capital could earn elsewhere); accounting profit does not.
+
+Perfect competition
+- Price takers: MR = P. Choose q where MR = MC, i.e. P = MC.
+- Profit = TR − VC − FC. Variable profit = TR − VC.
+- Short run: keep operating if variable profit ≥ 0 (P ≥ min AVC); fixed costs are paid either way. Shutting down earns −FC.
+- Long run: P = MR = MC = min ATC and economic profit = 0. If P < ATC, firms exit and price rises; if P > ATC, firms enter and price falls.
+
+Practice example (in Hill's style)
+P = 300, MC = 0.5q, FC = 100,000 → q = 600, TR = 180,000, VC = 0.25q² = 90,000, profit = −10,000. Keep operating: revenue covers variable cost.

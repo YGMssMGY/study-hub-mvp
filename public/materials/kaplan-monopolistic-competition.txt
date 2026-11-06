@@ -1,0 +1,8 @@
+Monopolistic competition · ECON 351x, Prof. Erin Kaplan (Exam 2)
+Study Hub topic brief. Source: Kaplan Monopolistic Competition slides.
+
+- Market definition: no or very low barriers to entry, many buyers and sellers, differentiated products that are highly substitutable but not perfect substitutes.
+- Each firm faces a downward-sloping, relatively elastic demand curve: a small price cut doesn't steal every customer, and a small rise doesn't lose them all.
+- Short run: profit max at MR = MC, so P > MC; the firm can earn profits or losses.
+- Long run: profits attract entry (losses cause exit), shifting each firm's demand until economic profit = 0, with demand just touching ATC.
+- Comparison with perfect competition: P > MC (some deadweight loss) and firms produce left of min ATC (excess capacity), but buyers get product variety.

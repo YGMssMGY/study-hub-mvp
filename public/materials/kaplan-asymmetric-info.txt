@@ -1,0 +1,8 @@
+Ch 12 · Asymmetric information · ECON 351x, Prof. Erin Kaplan (Exam 3)
+Study Hub topic brief. Source: Kaplan course map (Ch 12). The Ch 12 slides are not in the Drive folder yet, so this is a general overview.
+
+General overview (check it against Kaplan's lecture):
+- Asymmetric information: one side of a trade knows more than the other.
+- Adverse selection (hidden information before the deal): in a "lemons" used-car market, buyers can't tell good cars from bad, so they pay an average price and good cars leave the market. Insurance faces the same problem when high-risk buyers are most eager to buy.
+- Moral hazard (hidden action after the deal): once insured, people may take less care.
+- Fixes: signaling by the informed side (warranties, education credentials), screening by the uninformed side (deductibles, menus of contracts), reputation, mandates and disclosure rules.

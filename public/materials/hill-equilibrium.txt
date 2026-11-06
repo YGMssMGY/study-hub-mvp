@@ -1,0 +1,17 @@
+Equilibrium, surplus and efficiency · ECON 351x, Prof. Matthew Hill (Exam 1)
+Study Hub topic brief. Source: Hill Topics for Exam 1; Hill Equilibrium and Markets slides.
+
+Equilibrium
+- Find it graphically (where supply and demand cross) and algebraically (set QD = QS).
+- Price below equilibrium → shortage (QD > QS). Price above → surplus (QS > QD).
+- Know how shifts in supply and/or demand move price and quantity; when both shift, one of them is ambiguous.
+
+Efficiency
+- Total surplus TS = CS + PS. The efficient (socially optimal) outcome is where TS is highest: the competitive equilibrium.
+- Deadweight loss (DWL) = the surplus lost when the market is not at equilibrium.
+
+Practice example
+QD = 100 − 2P, QS = 2P − 20 → P = 30, Q = 40, CS = 400, PS = 400, TS = 800.
+If only 30 units trade: buyers value the 30th unit at P = (100 − 30)/2 = 35; sellers' cost is P = (30 + 20)/2 = 25.
+DWL = ½ × (40 − 30) × (35 − 25) = 50.
+Reading: Rent Control activity.

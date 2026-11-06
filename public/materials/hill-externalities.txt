@@ -1,0 +1,13 @@
+Externalities · ECON 351x, Prof. Matthew Hill (Exam 3)
+Study Hub topic brief. Source: Hill Externalities slides; Exam 3 Externalities practice set.
+
+- An externality is a cost or benefit that falls on people outside the trade.
+- Marginal social cost MSC = private MC + marginal external cost (MEC). Marginal social benefit MSB = private MB + marginal external benefit.
+- The social optimum is where MSB = MSC. With a negative externality the market produces too much; with a positive one, too little.
+- Fixes: a Pigouvian tax equal to the MEC at the optimum, a subsidy for positive externalities, regulation, or tradable permits.
+
+Practice example
+Demand P = 100 − Q, private supply P = 20 + Q, MEC = 10 per unit.
+- Market: 100 − Q = 20 + Q → Q = 40, P = 60.
+- Social optimum: 100 − Q = 30 + Q → Q = 35.
+- DWL = ½ × (40 − 35) × 10 = 25. A $10 per-unit tax brings output to 35.

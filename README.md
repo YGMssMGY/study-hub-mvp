@@ -58,6 +58,17 @@ These are proposed implementation checks for the selected features; the team can
 
 The other poster rows capture brainstorming ideas rather than committed MVP requirements. An AI professor chatbot, practice-test generation, exam prediction, audio review, and a past-student community are outside the initial scope unless the team explicitly adds them.
 
+## Course materials
+
+Source materials (slides, practice problems, past exams, answer keys, cheat sheets) live in the shared Google Drive folder **[study hub data folder](https://drive.google.com/drive/folders/1fYUtWDLXRGBEBOnFxGWrpoUGts9ep14p)**, not in this repository. The folder is shared with the USC domain; sign in with your usc.edu account.
+
+| Folder | Course / professor | Contents |
+| --- | --- | --- |
+| [econ351-Matthew Hill](https://drive.google.com/drive/folders/1ICWety-MQo4NQYHWIzczCpawQ5uNzLqm) | ECON 351, Matthew Hill | `slides`, `test1`, `test2`, `test3` (question banks, answer keys, topic lists, cheat sheets) |
+| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | Econ, Kaplin | `slides`, `practice problems`, `practice exams` |
+
+Do not commit course files to git. These materials belong to the professors and include exam answers, so keep them in the Drive folder and reference them from topic guides by link.
+
 ## Team and responsibilities
 
 Add one row per teammate. Claim an area and link the issue or pull request where you are working.
@@ -172,6 +183,7 @@ Suggested walkthrough: choose the course, open a topic, expand and collapse its 
 
 ## Project links
 
+- Course materials: [study hub data folder](https://drive.google.com/drive/folders/1fYUtWDLXRGBEBOnFxGWrpoUGts9ep14p) (Google Drive)
 - Design / wireframes: TODO
 - Task board: TODO
 - Course rubric: TODO

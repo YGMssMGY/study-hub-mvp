@@ -2,7 +2,7 @@
 
 A course project that brings scattered study materials into one easy-to-use interface, with content tailored to a course and professor.
 
-**Status:** Prototype. Landing page, course pages for both ECON 351x sections, and an AI study tool (`/study/`) are built; hand-written topic guides are not.  
+**Status:** Prototype on the `merge-study-tool` branch, not yet merged or deployed. Built: landing page, a course page for each ECON 351x section (Hill and Kaplan) with its own exams and topics, click-to-start topic briefs, the AI study tool (`/study/`), the Prof. AI tutor (`/prof-ai/` and a side panel on the study tool), and a site-wide style switch (USC / Lockin). Not built: hand-written topic guides, saved progress, accounts. The AI features have not been tested against the live API on the deployed site yet.  
 **Working name:** Study Hub (team can rename).  
 **Course / section:** TODO  
 **Team:** TODO  
@@ -37,21 +37,22 @@ The poster's **“Scale It”** row is how we narrow this down for a 2-week buil
 
 Professor-specific content means alignment with the professor's course materials and emphasis. How that content is prepared—manually, with AI assistance, or both—is a team decision.
 
-## Proposed MVP experience
+## Current experience
 
-1. Select a course and professor.
-2. Browse that course's topics.
-3. Open a topic's study guide.
-4. Expand or collapse its details.
-5. Follow references to original course materials.
-6. Open related resources when more help is needed.
+1. On the landing page, pick a class: ECON 351x with Matthew Hill or with Erin Kaplan.
+2. The course page lists that professor's topics, grouped by exam (13 topics each, over three exams; Kaplan's Exam 3 is in finals week).
+3. Click a topic. The study tool opens and builds a session (topic notes, practice questions, review notes) from that topic's short brief, with no upload needed.
+4. Or open the study tool and upload your own PDF, Word or text files.
+5. Ask Prof. AI (its own page, or the "Ask Prof. AI" side panel on the study tool) to explain a topic or quiz you, in that professor's framing.
+6. Follow the "Straight from the source" links on each course page to the original slides and practice sets in Google Drive.
+7. Use the Style switch in the header to change the whole site between **USC** (cardinal and gold, the Study Hub look) and **Lockin** (plain white, the study tool's own look). The choice is remembered in the browser.
 
-Start with one professor's section of ECON 351x and a small set of representative topics, then add the other section after the full flow works. Materials are ready for both Matthew Hill's and Erin Kaplan's sections; see [Course materials](#course-materials).
+The original plan below (expandable topic guides with per-topic source references and related resources) is only partly covered: topics link to briefs and AI sessions rather than hand-written guides.
 
 ## MVP acceptance checklist
 
-- [ ] A student can select the demo course and see its professor.
-- [ ] The displayed guides match that course and professor.
+- [x] A student can select the demo course and see its professor.
+- [x] The displayed guides match that course and professor (each section has its own exams, topics and briefs).
 - [ ] Each demo topic has a readable study guide.
 - [ ] Topic details can be expanded and collapsed.
 - [ ] Each demo guide includes clearly labeled source references.
@@ -65,7 +66,7 @@ These are proposed implementation checks for the selected features; the team can
 
 ## Scope boundaries
 
-The other poster rows capture brainstorming ideas rather than committed MVP requirements. The team marked them “fade”: too impractical for a 2-week build. An AI professor chatbot, practice-test generation, exam prediction, audio review, a past-student help network, and class reviews or study tips from past students are outside the initial scope unless the team explicitly adds them.
+The other poster rows capture brainstorming ideas rather than committed MVP requirements. The team marked them “fade”: too impractical for a 2-week build. Two of them have since been added: an AI professor chatbot (Prof. AI) and practice-question generation (the study tool and Prof. AI's quiz mode). Exam prediction, audio review, a past-student help network, and class reviews or study tips from past students remain out of scope.
 
 ## Course materials
 
@@ -97,13 +98,13 @@ Suggested areas: interface/design, course content, data/backend, integration/tes
 
 | Decision | Team choice | Notes / owner |
 | --- | --- | --- |
-| Frontend | Plain HTML/CSS (prototype) | USC-inspired cardinal/gold palette, Libre Caslon Text + Inter; tokens in `styles.css` |
-| Backend, if needed | TODO | |
-| Content storage | TODO | |
-| Manual vs. AI-assisted content | TODO | |
-| Hosting | TODO | |
-| Authentication, if needed | TODO | |
-| How professor-specific content is selected | TODO | |
+| Frontend | Plain HTML/CSS/JS, no framework | Two site-wide styles: USC (cardinal/gold, Libre Caslon Text + Inter; `styles.css`) and Lockin (`classic.css`, `study/styles.css`), switched by `theme.js` |
+| Backend, if needed | One Node API (`api/study.js` + `lib/`) | Calls the OpenAI API; key stays on the server |
+| Content storage | Static files in `public/materials/` | One brief per topic plus `topics.json`; course files stay in Drive |
+| Manual vs. AI-assisted content | Both | Briefs are written summaries; sessions and Prof. AI answers are AI-generated from them |
+| Hosting | Vercel | Deploys from `main`; `vercel.json` sets the build and security headers |
+| Authentication, if needed | Shared access code | `APP_ACCESS_CODE` gates the AI features; no student accounts |
+| How professor-specific content is selected | By page | Each course page links its own topics; Prof. AI takes `?prof=hill` or `?prof=kaplan` |
 | How guide compression works | TODO | |
 
 ### Proposed content structure
@@ -134,8 +135,11 @@ Copy this section for each demo topic, or move the completed entries into the ch
 
 The site is static HTML and CSS plus one small Node API for the study tool:
 
-- `public/index.html` is the landing page, `public/courses/` holds the course pages, and `public/styles.css` is shared by all pages.
-- `public/study/` is the study tool (upload files → topic notes, practice questions, review notes). It calls `api/study.js`, which uses `lib/` to talk to the OpenAI API.
+- `public/index.html` is the landing page and `public/courses/` holds the two course pages. `public/styles.css` is the USC style, `public/classic.css` the Lockin overrides, and `public/theme.js` / `theme.css` the header style switch.
+- `public/study/` is the study tool (upload files → topic notes, practice questions, review notes). `autostart.js` starts a session when a course page links to `/study/?topic=<id>`; `hub.css` gives the tool the USC style.
+- `public/materials/` holds the topic briefs and `topics.json`, which maps each topic id to its brief.
+- `public/prof-ai/` is the Prof. AI tutor page. `profs.js` holds each professor's course outline, and `sidebar.js` / `sidebar.css` add it as a side panel on the study tool.
+- `api/study.js` handles both tools (study sessions, plus `tutor-chat` and `tutor-quiz` for Prof. AI) and uses `lib/` to talk to the OpenAI API.
 - `server.mjs` serves `public/` and the API locally. On Vercel, `vercel.json` builds `public/` into `dist/` and deploys `api/study.js` as a function.
 
 Clone the repository:
@@ -151,7 +155,7 @@ Fill in the following once the stack is chosen:
 
 - **Prerequisites and versions:** Node.js 22. (Pages only: Python 3 is enough, but the study tool's AI features need Node.)
 - **Install command:** None; there are no dependencies.
-- **Environment variables:** copy `.env.example` to `.env.local` and fill in `OPENAI_API_KEY`. On Vercel also set `APP_ACCESS_CODE` (required) and `APP_SECRET` (recommended). Never commit keys.
+- **Environment variables:** copy `.env.example` to `.env.local` and fill in `OPENAI_API_KEY` (`OPENAI_MODEL` defaults to `gpt-4.1-mini`). On Vercel set `OPENAI_API_KEY`, `APP_ACCESS_CODE` (required) and `APP_SECRET` (recommended) under Settings → Environment Variables, then redeploy. Never commit keys or paste them into chats or issues.
 - **Development command:** `npm start`, then visit http://127.0.0.1:3000. Pages only: `python3 -m http.server 8000 --directory public`.
 - **Test command:** `npm test`
 - **Build / deployment command:** `npm run build`. Import the repo in Vercel with the root directory left as the repo root; `vercel.json` handles the rest.
@@ -183,13 +187,14 @@ Keep open decisions marked **TODO** until the team agrees.
 - **Demo topics:** TODO
 - **Presenter(s):** TODO
 - **Demo link / recording:** TODO
-- **Known limitations:** TODO
+- **Known limitations:** the AI features need the server and an access code (the Python preview shows pages only); Kaplan's Ch 12 and 13 briefs are general overviews until slides are in Drive; Prof. AI ignores uploaded images; no saved progress or accounts.
 
 Suggested walkthrough: choose the course, open a topic, expand and collapse its guide, visit an original source, and open a related resource.
 
 ## Open questions
 
 - Which professor's section of ECON 351x (Hill or Kaplan) do we demo first?
+- Is the shared access code enough, or do we need per-student sign-in before sharing the site widely?
 - Does “compressible” mean collapse/expand, shorter summaries, mastery-based hiding, or a combination?
 - Who will prepare and check the study content?
 - Which source formats do we need for the MVP?

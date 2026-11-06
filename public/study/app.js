@@ -37,7 +37,7 @@ function renderLanding() {
   document.body.classList.remove('in-workspace');
   $('#main').innerHTML = `<section class="landing">
     <section class="upload-panel" aria-labelledby="upload-title">
-      <h2 id="upload-title">Upload materials</h2>
+      <h1 id="upload-title">Upload materials</h1>
       <div class="drop-zone" id="drop-zone">
         <svg class="drop-icon" viewBox="0 0 34 38" fill="none" aria-hidden="true"><path d="M6 1h15l7 7v29H6V1Z" stroke="currentColor"/><path d="M21 1v8h7M17 29V15m-5 5 5-5 5 5" stroke="currentColor"/></svg>
         <div class="drop-title">Drop files or <u>browse</u></div>
@@ -110,7 +110,7 @@ function renderWorkspace() {
   const total = allSubtopics(study).length, mastered = allSubtopics(study).filter(s => isMastered(study, s.id)).length;
   const originalCount = study.questions.filter(q => q.origin === 'uploaded').length;
   $('#main').innerHTML = `<section class="workspace">
-    <div class="workspace-heading"><h2>${e(study.title)}</h2><p>${e(study.files?.join(' · ') || '')}</p></div>
+    <div class="workspace-heading"><h1>${e(study.title)}</h1><p>${e(study.files?.join(' · ') || '')}</p></div>
     <div class="workspace-tools"><button class="button secondary" id="new-material">Upload materials <span>+</span></button><details class="export-menu"><summary class="button secondary">Export notes <span>↓</span></summary><div class="export-options"><button id="export-pdf">Print / Save as PDF</button><button id="export-markdown">Markdown</button><button id="export-backup">Study backup</button></div></details></div>
     ${study.demo ? `<div class="sample-banner"><span>Sample materials · Written answers are graded by AI.</span><button id="sample-upload" class="text-button">Upload materials →</button></div>` : ''}
     <div class="desk-grid">
@@ -277,11 +277,5 @@ $('#clear-progress').addEventListener('click', () => {
   clearTimeout(saveTimer); localStorage.removeItem(STORAGE_KEY); study = null; files = []; queue = []; $('#settings-dialog').close(); renderLanding(); toast('Browser progress cleared.');
 });
 $('#settings-dialog').addEventListener('click', event => { if (event.target === $('#settings-dialog')) { const r = event.target.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) event.target.close(); } });
-const COURSES = { 'econ351-hill': 'ECON 351x · Hill', 'econ351-kaplin': 'ECON 351x · Kaplin' };
-const course = new URLSearchParams(location.search).get('course');
-if (COURSES[course]) {
-  const link = $('#crumb-course'); link.textContent = COURSES[course]; link.href = `/courses/${course}.html`;
-  link.hidden = false; $('#crumb-course-sep').hidden = false;
-}
 if (study) { queue = prioritizedQuestions(study); renderWorkspace(); } else renderLanding();
 checkConnection();

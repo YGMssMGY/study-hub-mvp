@@ -2,10 +2,11 @@
 
 A course project that brings scattered study materials into one easy-to-use interface, with content tailored to a course and professor.
 
-**Status:** Planning / README scaffold. The application has not been implemented yet.  
+**Status:** Prototype. A static landing page and placeholder course pages exist; topic guides are not built yet.  
 **Working name:** Study Hub (team can rename).  
 **Course / section:** TODO  
 **Team:** TODO  
+**Timeline:** About 2 weeks.  
 **Demo / submission date:** TODO
 
 ## Problem
@@ -22,9 +23,17 @@ This scope follows the **“Our Pick”** row of the team's brainstorming poster
 | Compressible study guide per topic | Let students expand topic details and collapse them into a compact overview. | TODO | Planned |
 | References to materials in different places | Attach source links to the relevant topic so students can return to original materials. | TODO | Planned |
 | Pointers to other resources | Offer related resources for further explanation or practice. | TODO | Planned |
-| User-friendly interface | Make courses, topics, guides, and resources easy to find and navigate. | TODO | Planned |
+| User-friendly interface | Make courses, topics, guides, and resources easy to find and navigate, organized with tabs. | TODO | Planned |
 
-**Interpretation to confirm:** “Compressible” is initially treated as expandable/collapsible topic guides. The team should decide whether it also means shortening summaries or hiding mastered material.
+The poster's **“Scale It”** row is how we narrow this down for a 2-week build:
+
+- Build for specific classes the team is taking, not every course.
+- Embed professor personalization into the curriculum interface.
+- Reference past lessons from the original course materials.
+- Point students to other online resources.
+- Organize content with tabs.
+
+**Interpretation to confirm:** “Compressible” is initially treated as expandable/collapsible topic guides. The team should decide whether it also means shortening summaries or hiding material once a student has mastered a topic, an idea from the poster's “Steal the Magic” row.
 
 Professor-specific content means alignment with the professor's course materials and emphasis. How that content is prepared—manually, with AI assistance, or both—is a team decision.
 
@@ -37,7 +46,7 @@ Professor-specific content means alignment with the professor's course materials
 5. Follow references to original course materials.
 6. Open related resources when more help is needed.
 
-Start with one course and a small set of representative topics. Expand after the full flow works.
+Start with one professor's section of ECON 351x and a small set of representative topics, then add the other section after the full flow works. Materials are ready for both Matthew Hill's and Kaplin's sections; see [Course materials](#course-materials).
 
 ## MVP acceptance checklist
 
@@ -56,7 +65,7 @@ These are proposed implementation checks for the selected features; the team can
 
 ## Scope boundaries
 
-The other poster rows capture brainstorming ideas rather than committed MVP requirements. An AI professor chatbot, practice-test generation, exam prediction, audio review, and a past-student community are outside the initial scope unless the team explicitly adds them.
+The other poster rows capture brainstorming ideas rather than committed MVP requirements. The team marked them “fade”: too impractical for a 2-week build. An AI professor chatbot, practice-test generation, exam prediction, audio review, a past-student help network, and class reviews or study tips from past students are outside the initial scope unless the team explicitly adds them.
 
 ## Course materials
 
@@ -64,8 +73,8 @@ Source materials (slides, practice problems, past exams, answer keys, cheat shee
 
 | Folder | Course / professor | Contents |
 | --- | --- | --- |
-| [econ351-Matthew Hill](https://drive.google.com/drive/folders/1ICWety-MQo4NQYHWIzczCpawQ5uNzLqm) | ECON 351, Matthew Hill | `slides`, `test1`, `test2`, `test3` (question banks, answer keys, topic lists, cheat sheets) |
-| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | Econ, Kaplin | `slides`, `practice problems`, `practice exams` |
+| [econ351-Matthew Hill](https://drive.google.com/drive/folders/1ICWety-MQo4NQYHWIzczCpawQ5uNzLqm) | ECON 351x, Matthew Hill | `slides`, `test1`, `test2`, `test3` (question banks, answer keys, topic lists, cheat sheets) |
+| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | ECON 351x, Kaplin | `slides`, `practice problems`, `practice exams` |
 
 Do not commit course files to git. These materials belong to the professors and include exam answers, so keep them in the Drive folder and reference them from topic guides by link.
 
@@ -86,7 +95,7 @@ Suggested areas: interface/design, course content, data/backend, integration/tes
 
 | Decision | Team choice | Notes / owner |
 | --- | --- | --- |
-| Frontend | TODO | |
+| Frontend | Plain HTML/CSS (prototype) | USC-inspired cardinal/gold palette, Libre Caslon Text + Inter; tokens in `styles.css` |
 | Backend, if needed | TODO | |
 | Content storage | TODO | |
 | Manual vs. AI-assisted content | TODO | |
@@ -121,7 +130,7 @@ Copy this section for each demo topic, or move the completed entries into the ch
 
 ## Getting started
 
-There is no runnable application yet. This repository currently establishes the project scope and collaboration plan.
+The prototype is plain HTML and CSS: `index.html` is the landing page, `courses/` holds placeholder course pages, and `styles.css` is shared by all of them.
 
 Clone the repository:
 
@@ -134,10 +143,10 @@ For a private repository, teammates need repository access and GitHub authentica
 
 Fill in the following once the stack is chosen:
 
-- **Prerequisites and versions:** TODO
-- **Install command:** TODO
+- **Prerequisites and versions:** A web browser. Python 3 only if you want a local server.
+- **Install command:** None.
 - **Environment variables:** TODO — document names and provide an example file without secrets.
-- **Development command:** TODO
+- **Development command:** Open `index.html` in a browser, or run `python3 -m http.server 8000` and visit http://localhost:8000
 - **Test command:** TODO
 - **Build / deployment command:** TODO
 
@@ -174,7 +183,7 @@ Suggested walkthrough: choose the course, open a topic, expand and collapse its 
 
 ## Open questions
 
-- Which course and professor will we use for the first demo?
+- Which professor's section of ECON 351x (Hill or Kaplin) do we demo first?
 - Does “compressible” mean collapse/expand, shorter summaries, mastery-based hiding, or a combination?
 - Who will prepare and check the study content?
 - Which source formats do we need for the MVP?

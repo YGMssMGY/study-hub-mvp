@@ -1,0 +1,13 @@
+Price discrimination · ECON 351x, Prof. Matthew Hill (Exam 3)
+Study Hub topic brief. Source: Hill Topics for Exam 3 (Ch 7); Price Discrimination slides and practice set.
+
+Exam 3 is cumulative; Ch 7 is the new chapter.
+- Price discrimination moves consumer surplus to the firm. It needs market power, limited resale (arbitrage) and a way to tell buyers apart.
+- First degree (perfect): each unit at the buyer's reservation price. Output is efficient (P = MC on the last unit), DWL = 0, CS = 0.
+- Second degree: different prices for different quantities, e.g. block pricing ($20 for units 1–2, $16 for 3–4), buy-one-get-one, bulk sizes.
+- Third degree: one price per group (student tickets). Charge more in the less elastic market (inverse elasticity rule).
+- Intertemporal pricing: launch high, cut later (moves down demand over time). Peak-load pricing: charge more at demand peaks (holiday flights).
+- Two-part tariff: access fee + usage fee. For one consumer: usage fee = MC, access fee = the consumer surplus at that price.
+- Bundling works when buyers' valuations are negatively correlated. Tying: printers and toner, coffee machines and pods.
+- Compare schemes by profit, total surplus and DWL.
+Reading: Outsourcing Carbon.

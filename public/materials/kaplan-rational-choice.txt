@@ -1,0 +1,11 @@
+Ch 1 · Rational choice and key ideas · ECON 351x, Prof. Erin Kaplan (Exam 1)
+Study Hub topic brief. Source: Kaplan Ch 1 slides.
+
+- Economics: how people make choices under scarcity, and what those choices mean for society. For managers: how economic forces shape the business environment and how strategy should respond.
+- Rule: take an action if and only if benefits ≥ costs.
+- Opportunity cost = the value of the next-best alternative given up. Example: a racket worth $40 and a t-shirt worth $25 each cost $20; buying the racket gives up the shirt's net value ($5).
+- Sunk costs are ignored. Example: a $10 movie ticket is already paid; if the movie is worth $20 and getting there costs $15 by Lyft, go.
+- Economic cost = full opportunity cost, which can differ from accounting cost.
+- Marginal thinking: the optimal amount is where marginal benefit = marginal cost. Example: tacos with marginal utility 10, 7, 5, 3, 1, −2: at a price of $3.50 eat 3, at $1.50 eat 4.
+- "Models are like maps." "We are skeptics. A good story is not evidence."
+Exam 1 covers Ch 1, 3, 4 and 5.1: multiple choice, 75 minutes, one-line calculator.

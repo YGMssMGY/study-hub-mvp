@@ -1,0 +1,19 @@
+Supply and demand · ECON 351x, Prof. Matthew Hill (Exam 1)
+Study Hub topic brief. Source: Hill Topics for Exam 1; Hill Demand and Supply slides.
+
+Supply
+- A change in the good's own price changes quantity supplied (a movement along the supply curve).
+- Supply shifters: technology, price of inputs, number of suppliers, expectations.
+- Producer surplus (PS) = area above the supply curve and below the price.
+
+Demand
+- A change in the good's own price changes quantity demanded (a movement along the demand curve).
+- Demand shifters: consumer income, number of consumers, tastes, prices of substitutes and complements, expectations.
+- Consumer surplus (CS) = area below the demand curve and above the price.
+
+Practice example
+Demand QD = 100 − 2P, supply QS = 2P − 20.
+- Equilibrium: 100 − 2P = 2P − 20 → P = 30, Q = 40.
+- Demand hits Q = 0 at P = 50, so CS = ½ × 40 × (50 − 30) = 400.
+- Supply hits Q = 0 at P = 10, so PS = ½ × 40 × (30 − 10) = 400.
+- A rise in income (normal good) shifts demand right: P and Q both rise.

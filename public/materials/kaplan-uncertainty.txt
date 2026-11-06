@@ -1,0 +1,10 @@
+Ch 9 · Uncertainty · ECON 351x, Prof. Erin Kaplan (Exam 3)
+Study Hub topic brief. Source: Kaplan Ch 9 slides; Extra Practice 9.
+
+- Information has value. Example: a project costs $1,000,000; revenue is $1,700,000 (40%) or $200,000 (60%), so expected revenue is $800,000 and you reject it. A $100,000 test market that reveals demand lets you launch only when demand is high: expected profit 0.4 × 700,000 − 100,000 = $180,000. "Fail fast."
+- St. Petersburg paradox: infinite expected value, yet people pay little to play.
+- Risk aversion = diminishing marginal utility. Expected utility E[U] = Σ p·U(x).
+- Certainty equivalent and risk premium = expected value − certainty equivalent.
+- Example: a sure $54,000 vs 50/50 $5,000 or $105,000 (EV $55,000). With U = √x, E[U] ≈ 197.4 < √54,000 ≈ 232.4, so take the sure job; certainty equivalent ≈ $38,950.
+- Behavioral ideas: Allais paradox, loss aversion, prospect theory, endowment effect.
+- Diversification works best with negatively correlated risks. Insurance markets need uncorrelated, measurable risks and little moral hazard or adverse selection.

@@ -1,0 +1,10 @@
+Ch 6 · Externalities and public goods · ECON 351x, Prof. Erin Kaplan (Exam 2)
+Study Hub topic brief. Source: Kaplan Ch 6 slides; Extra Practice 6.
+
+- Market failures: incomplete information, externalities, non-rival or non-excludable goods, market power.
+- MSC = MC + MEC; MSB = MB + MEB. Social optimum: MSB = MSC.
+- Example: demand P = 40 − 2Q, supply P = 4 + Q, MEC = 6. Market Q = 12; social optimum Q = 10; DWL = ½ × 2 × 6 = 6. Fix: a $6 Pigouvian tax.
+- Command-and-control vs market-based regulation. Mexico City's "Day without a car" (1989) shows how rules can backfire.
+- Congestion pricing: the toll equals the MEC at the optimal quantity.
+- Tradable permits (California cap-and-invest): even free allowances create an incentive to cut emissions, because selling them is the opportunity cost.
+- Goods grid: private (rival, excludable), common resources (rival, non-excludable → tragedy of the commons), club goods (non-rival, excludable), public goods (non-rival, non-excludable → free riding).

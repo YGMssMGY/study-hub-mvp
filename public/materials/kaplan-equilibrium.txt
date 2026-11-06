@@ -1,0 +1,10 @@
+Ch 5.1 · Market equilibrium · ECON 351x, Prof. Erin Kaplan (Exam 1)
+Study Hub topic brief. Source: Kaplan Ch 5.1 slides; Extra Practice 5.1.
+
+- Perfect competition assumptions: many buyers and sellers, identical products, free entry and exit, full information.
+- Supply shifters: number of firms, technology, input prices, prices of related products, expected future prices.
+- Example: coffee QD = 55 − 10P, QS = 5P − 5 → P = $4, Q = 15. At P = $2, QD = 35 and QS = 5: a shortage of 30.
+- Shifts: tea price up → coffee demand up (P and Q rise). Cheaper grinders → supply up (P falls, Q rises). Both together → Q rises, P ambiguous.
+- Efficiency: the competitive equilibrium maximizes total surplus. Example: QD = 24 − 4P, QS = 2P → P = 4, Q = 8; CS = 8, PS = 16, TS = 24.
+- Long run: losses → exit, supply falls, price rises; profits → entry. Long-run equilibrium: zero economic profit at min ATC.
+- Allocative efficiency: P = MC. Productive efficiency: production at min ATC.

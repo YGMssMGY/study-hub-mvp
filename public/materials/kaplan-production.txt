@@ -1,0 +1,11 @@
+Ch 3 · Production, cost and profit · ECON 351x, Prof. Erin Kaplan (Exam 1)
+Study Hub topic brief. Source: Kaplan Ch 3 slides; Extra Practice 3.
+
+- Production function Q = f(K, L). Short run: at least one input fixed; long run: all inputs variable.
+- Marginal product; diminishing marginal returns. MRTS(L, K) = MPL / MPK.
+- Returns to scale: double the inputs → more than double output (increasing), double (constant), less (decreasing). For Cobb-Douglas, add the exponents.
+- Cost = wL + rK. Cost minimization: MRTS = w/r.
+- Cost curves: TC = VC + FC; MC = ΔTC/Δq; ATC = TC/q; AVC = VC/q; MC crosses AVC and ATC at their minimums.
+- Profit = TR − TC = (P − ATC) × Q; maximize where MR = MC.
+- Perfect competition: price takers, so MR = P and the firm produces where P = MC. Open if P ≥ min AVC; profit is positive if P > ATC.
+- Economies of scale (specialization, buying power) and then diseconomies (complexity).

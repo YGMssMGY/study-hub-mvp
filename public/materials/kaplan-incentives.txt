@@ -1,0 +1,9 @@
+Ch 13 · Incentives and contracts · ECON 351x, Prof. Erin Kaplan (Exam 3)
+Study Hub topic brief. Source: Kaplan course map (Ch 13). The Ch 13 slides are not in the Drive folder yet, so this is a general overview.
+
+General overview (check it against Kaplan's lecture):
+- Principal–agent problem: a principal (owner, employer) hires an agent whose effort is hard to observe and whose goals differ.
+- Contracts align incentives: piece rates, commissions, bonuses, profit sharing, stock options.
+- Trade-off: stronger pay-for-performance improves effort but loads risk onto the agent, who may need to be paid more to accept it.
+- Efficiency wages: paying above market makes the job valuable to keep, which discourages shirking.
+- Watch for gaming: people optimize what is measured (Kaplan: "people respond to incentives, often in unintended ways").

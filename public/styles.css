@@ -1144,3 +1144,22 @@ summary:focus-visible {
   padding: 0 18px;
   font-size: 0.95rem;
 }
+
+/* Course page: where each exam's topic list comes from, and topics with no slides yet */
+
+.exam-note {
+  margin: -6px 0 14px;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.topic-card--empty {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.topic-card--empty .topic-num,
+.topic-card--empty .topic-badge {
+  background: var(--light);
+  color: var(--gray);
+}

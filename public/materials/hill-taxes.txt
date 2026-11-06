@@ -1,0 +1,13 @@
+Taxes and subsidies · ECON 351x, Prof. Matthew Hill (Exam 3)
+Study Hub topic brief. Source: Hill Taxes and Subsidies slides; Exam 3 Taxes & Subsidies practice set.
+
+- A per-unit tax t drives a wedge: P_buyer = P_seller + t. Quantity falls and creates deadweight loss.
+- It doesn't matter who legally pays the tax. The burden (incidence) falls more on the less elastic side of the market.
+- Tax revenue = t × Q after the tax.
+- A per-unit subsidy s works in reverse: P_seller = P_buyer + s. Quantity rises above the efficient level; the cost to government is s × Q.
+
+Practice example
+QD = 100 − 2P, QS = 2P − 20, tax t = 10.
+- 100 − 2Pb = 2(Pb − 10) − 20 → Pb = 35, Ps = 25, Q = 30 (down from 40).
+- Revenue = 10 × 30 = 300. DWL = ½ × 10 × (40 − 30) = 50.
+- Buyers pay 5 more and sellers get 5 less: equal split, because supply and demand are equally steep here.

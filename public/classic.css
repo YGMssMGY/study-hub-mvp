@@ -341,3 +341,7 @@ html[data-theme="classic"] .button--outline {
   background: var(--white);
   color: var(--ink);
 }
+
+html[data-theme="classic"] .topic-card--empty .topic-badge {
+  color: var(--gray);
+}

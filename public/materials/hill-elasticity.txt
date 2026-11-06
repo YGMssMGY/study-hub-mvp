@@ -1,0 +1,17 @@
+Elasticity · ECON 351x, Prof. Matthew Hill (Exam 1)
+Study Hub topic brief. Source: Hill Topics for Exam 1; Hill Elasticity slides; Hill cheat sheet.
+
+Own-price elasticity of demand
+- E = %ΔQ ÷ %ΔP. Point form: E = (dQ/dP) × (P/Q).
+- |E| > 1 elastic, |E| < 1 inelastic, |E| = 1 unit elastic. Compare the absolute value to 1; slope is not elasticity.
+- Revenue test: if demand is elastic, a price cut raises total revenue; if inelastic, a price cut lowers it.
+- On a linear demand curve, demand is elastic at high prices and inelastic at low prices.
+
+Supply elasticity
+- Same idea for the supply curve: %ΔQs ÷ %ΔP, interpreted as elastic, inelastic or unit elastic.
+
+Both formulas are on the cheat sheet Hill allows in exams.
+
+Practice example
+Demand Q = 100 − 2P at P = 30: Q = 40, dQ/dP = −2, so E = −2 × 30/40 = −1.5. Demand is elastic, so lowering the price raises revenue.
+At P = 20: Q = 60, E = −2 × 20/60 ≈ −0.67, inelastic.

@@ -46,7 +46,7 @@ Professor-specific content means alignment with the professor's course materials
 5. Follow references to original course materials.
 6. Open related resources when more help is needed.
 
-Start with one professor's section of ECON 351x and a small set of representative topics, then add the other section after the full flow works. Materials are ready for both Matthew Hill's and Kaplin's sections; see [Course materials](#course-materials).
+Start with one professor's section of ECON 351x and a small set of representative topics, then add the other section after the full flow works. Materials are ready for both Matthew Hill's and Erin Kaplan's sections; see [Course materials](#course-materials).
 
 ## MVP acceptance checklist
 
@@ -74,9 +74,11 @@ Source materials (slides, practice problems, past exams, answer keys, cheat shee
 | Folder | Course / professor | Contents |
 | --- | --- | --- |
 | [econ351-Matthew Hill](https://drive.google.com/drive/folders/1ICWety-MQo4NQYHWIzczCpawQ5uNzLqm) | ECON 351x, Matthew Hill | `slides`, `test1`, `test2`, `test3` (question banks, answer keys, topic lists, cheat sheets) |
-| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | ECON 351x, Kaplin | `slides`, `practice problems`, `practice exams` |
+| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | ECON 351x, Erin Kaplan (the folder name misspells it) | `slides`, `practice problems`, `practice exams` |
 
-Do not commit course files to git. These materials belong to the professors and include exam answers, so keep them in the Drive folder and reference them from topic guides by link.
+Do not commit the course files themselves (PDF, PPTX, DOCX) to git. These materials belong to the professors and include exam answers, so keep them in the Drive folder and reference them from topic guides by link.
+
+`public/materials/` holds a short Study Hub–written brief for each course-page topic (key ideas, formulas and a worked example, condensed from the topic lists and course notes, not copied slides). Clicking a topic sends its brief to the study tool, which builds the session. Ch 12 and 13 of Kaplan's course have no slides in Drive yet, so their briefs are general overviews.
 
 ## Team and responsibilities
 
@@ -187,7 +189,7 @@ Suggested walkthrough: choose the course, open a topic, expand and collapse its 
 
 ## Open questions
 
-- Which professor's section of ECON 351x (Hill or Kaplin) do we demo first?
+- Which professor's section of ECON 351x (Hill or Kaplan) do we demo first?
 - Does “compressible” mean collapse/expand, shorter summaries, mastery-based hiding, or a combination?
 - Who will prepare and check the study content?
 - Which source formats do we need for the MVP?

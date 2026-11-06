@@ -1,0 +1,11 @@
+Monopolistic competition · ECON 351x, Prof. Matthew Hill (Exam 2)
+Study Hub topic brief. Source: Hill Topics for Exam 2; Monopolistic Competition slides and practice set.
+
+- Definition: many firms, free entry and exit, each selling a differentiated product (close but not perfect substitutes).
+- Each firm faces a downward-sloping, fairly elastic demand curve, so P > MC and it has a little market power.
+- Relationship to the Lerner index: (P − MC)/P = −1/E. Fewer close substitutes → less elastic demand → higher Lerner index.
+- Short run: set MR = MC; profits or losses are possible.
+- Long run: entry or exit pushes economic profit to zero (demand just touches ATC), but P still exceeds MC.
+- Most real-world markets look like monopolistic competition.
+- Price ranking for the same demand and costs: Monopoly > Monopolistic competition > Perfect competition.
+Reading: podcast on monopolistic competition in the real world.

@@ -1,0 +1,11 @@
+Ch 8 · Pricing strategies · ECON 351x, Prof. Erin Kaplan (Exam 2)
+Study Hub topic brief. Source: Kaplan Ch 8 slides; Extra Practice 8.
+
+- Price discrimination needs market power, knowledge of willingness to pay and no resale.
+- First degree: charge each buyer their reservation price; MR = P; efficient quantity; the firm takes all surplus.
+- Second degree: block pricing, different prices for different quantities.
+- Third degree: different prices for different groups. Set MR1 = MR2 = MC; charge the less elastic group more.
+- Example: MC = 20; professionals P1 = 100 − Q1 → Q1 = 40, P1 = $60; students P2 = 60 − 0.25Q2 → Q2 = 80, P2 = $40; profit = $3,200. Lerner: 2/3 for professionals, 1/2 for students.
+- Intertemporal pricing, peak-load pricing (charge more when capacity makes MC high), yield management.
+- Two-part tariff: usage fee = MC, access fee = consumer surplus at that fee.
+- Bundling beats separate prices when demands are negatively correlated. Tying: sell the primary product cheap, profit on the secondary one.

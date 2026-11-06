@@ -2,7 +2,7 @@
 
 A course project that brings scattered study materials into one easy-to-use interface, with content tailored to a course and professor.
 
-**Status:** Planning / README scaffold. The application has not been implemented yet.  
+**Status:** Prototype. A static landing page and placeholder course pages exist; topic guides are not built yet.  
 **Working name:** Study Hub (team can rename).  
 **Course / section:** TODO  
 **Team:** TODO  
@@ -46,7 +46,7 @@ Professor-specific content means alignment with the professor's course materials
 5. Follow references to original course materials.
 6. Open related resources when more help is needed.
 
-Start with one of our classes and a small set of representative topics, then add the second class after the full flow works. Materials are ready for ECON 351 (Matthew Hill) and Econ (Kaplin); see [Course materials](#course-materials).
+Start with one professor's section of ECON 351x and a small set of representative topics, then add the other section after the full flow works. Materials are ready for both Matthew Hill's and Kaplin's sections; see [Course materials](#course-materials).
 
 ## MVP acceptance checklist
 
@@ -73,8 +73,8 @@ Source materials (slides, practice problems, past exams, answer keys, cheat shee
 
 | Folder | Course / professor | Contents |
 | --- | --- | --- |
-| [econ351-Matthew Hill](https://drive.google.com/drive/folders/1ICWety-MQo4NQYHWIzczCpawQ5uNzLqm) | ECON 351, Matthew Hill | `slides`, `test1`, `test2`, `test3` (question banks, answer keys, topic lists, cheat sheets) |
-| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | Econ, Kaplin | `slides`, `practice problems`, `practice exams` |
+| [econ351-Matthew Hill](https://drive.google.com/drive/folders/1ICWety-MQo4NQYHWIzczCpawQ5uNzLqm) | ECON 351x, Matthew Hill | `slides`, `test1`, `test2`, `test3` (question banks, answer keys, topic lists, cheat sheets) |
+| [Econ-Kaplin](https://drive.google.com/drive/folders/1XSvLsIzexQNP-rN0mX--7BVF1C9Bi1M3) | ECON 351x, Kaplin | `slides`, `practice problems`, `practice exams` |
 
 Do not commit course files to git. These materials belong to the professors and include exam answers, so keep them in the Drive folder and reference them from topic guides by link.
 
@@ -95,7 +95,7 @@ Suggested areas: interface/design, course content, data/backend, integration/tes
 
 | Decision | Team choice | Notes / owner |
 | --- | --- | --- |
-| Frontend | TODO | |
+| Frontend | Plain HTML/CSS (prototype) | USC-inspired cardinal/gold palette, Libre Caslon Text + Inter; tokens in `styles.css` |
 | Backend, if needed | TODO | |
 | Content storage | TODO | |
 | Manual vs. AI-assisted content | TODO | |
@@ -130,7 +130,7 @@ Copy this section for each demo topic, or move the completed entries into the ch
 
 ## Getting started
 
-There is no runnable application yet. This repository currently establishes the project scope and collaboration plan.
+The prototype is plain HTML and CSS: `index.html` is the landing page, `courses/` holds placeholder course pages, and `styles.css` is shared by all of them.
 
 Clone the repository:
 
@@ -143,10 +143,10 @@ For a private repository, teammates need repository access and GitHub authentica
 
 Fill in the following once the stack is chosen:
 
-- **Prerequisites and versions:** TODO
-- **Install command:** TODO
+- **Prerequisites and versions:** A web browser. Python 3 only if you want a local server.
+- **Install command:** None.
 - **Environment variables:** TODO — document names and provide an example file without secrets.
-- **Development command:** TODO
+- **Development command:** Open `index.html` in a browser, or run `python3 -m http.server 8000` and visit http://localhost:8000
 - **Test command:** TODO
 - **Build / deployment command:** TODO
 
@@ -183,7 +183,7 @@ Suggested walkthrough: choose the course, open a topic, expand and collapse its 
 
 ## Open questions
 
-- Which of our two classes (ECON 351 with Hill, or Econ with Kaplin) do we demo first?
+- Which professor's section of ECON 351x (Hill or Kaplin) do we demo first?
 - Does “compressible” mean collapse/expand, shorter summaries, mastery-based hiding, or a combination?
 - Who will prepare and check the study content?
 - Which source formats do we need for the MVP?

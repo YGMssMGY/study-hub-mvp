@@ -5,28 +5,27 @@ const root = document.documentElement;
 let savedTheme = null;
 try { savedTheme = localStorage.getItem(THEME_KEY); } catch { /* Storage unavailable: use the default. */ }
 root.dataset.theme = savedTheme === 'classic' ? 'classic' : 'hub';
-// Inside the Prof. AI side panel: no switch bar of its own; follow the page around it instead.
+// Inside the Prof. AI side panel: no switch of its own; follow the page around it instead.
 const framed = window.self !== window.top;
 if (framed) root.classList.add('framed');
 window.addEventListener('storage', event => {
   if (event.key === THEME_KEY) root.dataset.theme = event.newValue === 'classic' ? 'classic' : 'hub';
 });
 
+// The switch goes inside the page's own header, at the element marked data-theme-slot.
 document.addEventListener('DOMContentLoaded', () => {
-  if (framed) return;
-  const bar = document.createElement('div');
-  bar.className = 'theme-bar';
-  bar.innerHTML = `<div class="theme-bar-inner">
-    <a class="theme-home" href="/">Study Hub home</a>
-    <div class="theme-switch" role="group" aria-label="Site style">
-      <span class="theme-switch-label">Style</span>
-      <button type="button" data-set-theme="hub">Study Hub</button>
-      <button type="button" data-set-theme="classic">Study tool</button>
-    </div>
-  </div>`;
-  document.body.prepend(bar);
-  const sync = () => bar.querySelectorAll('[data-set-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setTheme === root.dataset.theme)));
-  bar.addEventListener('click', event => {
+  const slot = document.querySelector('[data-theme-slot]');
+  if (framed || !slot) return;
+  const group = document.createElement('div');
+  group.className = 'theme-switch';
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', 'Site style');
+  group.innerHTML = `<span class="theme-switch-label">Style</span>
+    <button type="button" data-set-theme="hub">Hub</button>
+    <button type="button" data-set-theme="classic">Tool</button>`;
+  slot.append(group);
+  const sync = () => group.querySelectorAll('[data-set-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setTheme === root.dataset.theme)));
+  group.addEventListener('click', event => {
     const button = event.target.closest('[data-set-theme]');
     if (!button) return;
     root.dataset.theme = button.dataset.setTheme;

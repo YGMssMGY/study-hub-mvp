@@ -25,12 +25,12 @@ export function createWorker(assets) {
         await handler(req, res, env || {});
         return new Response(responseBody, { status, headers: responseHeaders });
       }
-      const asset = assets[url.pathname === '/' ? '/index.html' : url.pathname];
+      const asset = assets[url.pathname.endsWith('/') ? url.pathname + 'index.html' : url.pathname];
       if (!asset || !['GET', 'HEAD'].includes(request.method)) return new Response('Not found', { status: 404 });
       return new Response(request.method === 'HEAD' ? null : asset.body, { headers: {
         'Content-Type': asset.type, 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff',
         'Referrer-Policy': 'strict-origin-when-cross-origin',
-        'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'"
+        'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'"
       } });
     }
   };

@@ -2,7 +2,7 @@
 
 A course project that brings scattered study materials into one easy-to-use interface, with content tailored to a course and professor.
 
-**Status:** Prototype. A static landing page and placeholder course pages exist; topic guides are not built yet.  
+**Status:** Prototype. Landing page, course pages for both ECON 351x sections, and an AI study tool (`/study/`) are built; hand-written topic guides are not.  
 **Working name:** Study Hub (team can rename).  
 **Course / section:** TODO  
 **Team:** TODO  
@@ -130,7 +130,11 @@ Copy this section for each demo topic, or move the completed entries into the ch
 
 ## Getting started
 
-The prototype is plain HTML and CSS: `index.html` is the landing page, `courses/` holds placeholder course pages, and `styles.css` is shared by all of them.
+The site is static HTML and CSS plus one small Node API for the study tool:
+
+- `public/index.html` is the landing page, `public/courses/` holds the course pages, and `public/styles.css` is shared by all pages.
+- `public/study/` is the study tool (upload files → topic notes, practice questions, review notes). It calls `api/study.js`, which uses `lib/` to talk to the OpenAI API.
+- `server.mjs` serves `public/` and the API locally. On Vercel, `vercel.json` builds `public/` into `dist/` and deploys `api/study.js` as a function.
 
 Clone the repository:
 
@@ -143,12 +147,12 @@ For a private repository, teammates need repository access and GitHub authentica
 
 Fill in the following once the stack is chosen:
 
-- **Prerequisites and versions:** A web browser. Python 3 only if you want a local server.
-- **Install command:** None.
-- **Environment variables:** TODO — document names and provide an example file without secrets.
-- **Development command:** Open `index.html` in a browser, or run `python3 -m http.server 8000` and visit http://localhost:8000
-- **Test command:** TODO
-- **Build / deployment command:** TODO
+- **Prerequisites and versions:** Node.js 22. (Pages only: Python 3 is enough, but the study tool's AI features need Node.)
+- **Install command:** None; there are no dependencies.
+- **Environment variables:** copy `.env.example` to `.env.local` and fill in `OPENAI_API_KEY`. On Vercel also set `APP_ACCESS_CODE` (required) and `APP_SECRET` (recommended). Never commit keys.
+- **Development command:** `npm start`, then visit http://127.0.0.1:3000. Pages only: `python3 -m http.server 8000 --directory public`.
+- **Test command:** `npm test`
+- **Build / deployment command:** `npm run build`. Import the repo in Vercel with the root directory left as the repo root; `vercel.json` handles the rest.
 
 ## How we contribute
 

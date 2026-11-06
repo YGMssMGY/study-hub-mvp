@@ -10,7 +10,7 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   if (url.pathname === '/api/study') return handler(req, res);
   try {
-    const path = resolve(publicDir, '.' + decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname));
+    const path = resolve(publicDir, '.' + decodeURIComponent(url.pathname.endsWith('/') ? url.pathname + 'index.html' : url.pathname));
     if (!path.startsWith(publicDir.endsWith(sep) ? publicDir : publicDir + sep)) throw new Error('Invalid path');
     const data = await readFile(path);
     res.setHeader('Content-Type', `${mime[extname(path)] || 'application/octet-stream'}; charset=utf-8`);

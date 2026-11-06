@@ -1,9 +1,0 @@
-node_modules/
-.env*
-!.env.example
-.vercel/
-.DS_Store
-coverage/
-dist/
-worker/index.js
-*.zip

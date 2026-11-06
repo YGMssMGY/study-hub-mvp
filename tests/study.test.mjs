@@ -4,8 +4,8 @@ import { seal, unseal, validateFiles } from '../lib/security.mjs';
 import { normalizeQuestions, publicQuestion, grade, gradeDemo, analyze, generate } from '../lib/study.mjs';
 import { createCipheriv, createHash, randomBytes } from 'node:crypto';
 import { studySchema, validateSchema } from '../lib/schema.mjs';
-import { demoStudy } from '../public/demo.js';
-import { correctCount, isMastered, recordAttempt, focusIds, prioritizedQuestions, validSession } from '../public/state.js';
+import { demoStudy } from '../public/study/demo.js';
+import { correctCount, isMastered, recordAttempt, focusIds, prioritizedQuestions, validSession } from '../public/study/state.js';
 
 const oldKey = process.env.OPENAI_API_KEY, oldSecret = process.env.APP_SECRET, realFetch = globalThis.fetch;
 before(() => { process.env.OPENAI_API_KEY = 'test-key-not-a-real-secret'; process.env.APP_SECRET = 'test-secret'; });

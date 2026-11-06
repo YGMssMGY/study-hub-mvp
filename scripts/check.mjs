@@ -15,5 +15,5 @@ async function check(dir) {
 await check('.');
 JSON.parse(await readFile('vercel.json', 'utf8'));
 const html = await readFile('public/study/index.html', 'utf8');
-if (!html.includes('src="/study/app.js"') || !html.includes('href="/study/study.css"')) throw new Error('Missing application assets');
+if (!html.includes('src="/study/app.js"') || !html.includes('href="/study/styles.css"')) throw new Error('Missing application assets');
 console.log('JavaScript syntax, configuration, and application entry point verified.');

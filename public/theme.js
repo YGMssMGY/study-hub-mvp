@@ -1,4 +1,4 @@
-// Site-wide style switch: "hub" (Study Hub look) or "classic" (the study tool's own look).
+// Site-wide style switch: "hub" (shown as USC, the Study Hub look) or "classic" (shown as Lockin, the study tool's own look).
 // Loaded as a classic script in <head> so each page paints in the saved style without a flash.
 const THEME_KEY = 'site-theme';
 const root = document.documentElement;
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   group.setAttribute('role', 'group');
   group.setAttribute('aria-label', 'Site style');
   group.innerHTML = `<span class="theme-switch-label">Style</span>
-    <button type="button" data-set-theme="hub">Hub</button>
-    <button type="button" data-set-theme="classic">Tool</button>`;
+    <button type="button" data-set-theme="hub">USC</button>
+    <button type="button" data-set-theme="classic">Lockin</button>`;
   slot.append(group);
   const sync = () => group.querySelectorAll('[data-set-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setTheme === root.dataset.theme)));
   group.addEventListener('click', event => {

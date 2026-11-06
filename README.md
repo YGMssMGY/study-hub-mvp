@@ -6,6 +6,7 @@ A course project that brings scattered study materials into one easy-to-use inte
 **Working name:** Study Hub (team can rename).  
 **Course / section:** TODO  
 **Team:** TODO  
+**Timeline:** About 2 weeks.  
 **Demo / submission date:** TODO
 
 ## Problem
@@ -22,9 +23,17 @@ This scope follows the **“Our Pick”** row of the team's brainstorming poster
 | Compressible study guide per topic | Let students expand topic details and collapse them into a compact overview. | TODO | Planned |
 | References to materials in different places | Attach source links to the relevant topic so students can return to original materials. | TODO | Planned |
 | Pointers to other resources | Offer related resources for further explanation or practice. | TODO | Planned |
-| User-friendly interface | Make courses, topics, guides, and resources easy to find and navigate. | TODO | Planned |
+| User-friendly interface | Make courses, topics, guides, and resources easy to find and navigate, organized with tabs. | TODO | Planned |
 
-**Interpretation to confirm:** “Compressible” is initially treated as expandable/collapsible topic guides. The team should decide whether it also means shortening summaries or hiding mastered material.
+The poster's **“Scale It”** row is how we narrow this down for a 2-week build:
+
+- Build for specific classes the team is taking, not every course.
+- Embed professor personalization into the curriculum interface.
+- Reference past lessons from the original course materials.
+- Point students to other online resources.
+- Organize content with tabs.
+
+**Interpretation to confirm:** “Compressible” is initially treated as expandable/collapsible topic guides. The team should decide whether it also means shortening summaries or hiding material once a student has mastered a topic, an idea from the poster's “Steal the Magic” row.
 
 Professor-specific content means alignment with the professor's course materials and emphasis. How that content is prepared—manually, with AI assistance, or both—is a team decision.
 
@@ -37,7 +46,7 @@ Professor-specific content means alignment with the professor's course materials
 5. Follow references to original course materials.
 6. Open related resources when more help is needed.
 
-Start with one course and a small set of representative topics. Expand after the full flow works.
+Start with one of our classes and a small set of representative topics, then add the second class after the full flow works. Materials are ready for ECON 351 (Matthew Hill) and Econ (Kaplin); see [Course materials](#course-materials).
 
 ## MVP acceptance checklist
 
@@ -56,7 +65,7 @@ These are proposed implementation checks for the selected features; the team can
 
 ## Scope boundaries
 
-The other poster rows capture brainstorming ideas rather than committed MVP requirements. An AI professor chatbot, practice-test generation, exam prediction, audio review, and a past-student community are outside the initial scope unless the team explicitly adds them.
+The other poster rows capture brainstorming ideas rather than committed MVP requirements. The team marked them “fade”: too impractical for a 2-week build. An AI professor chatbot, practice-test generation, exam prediction, audio review, a past-student help network, and class reviews or study tips from past students are outside the initial scope unless the team explicitly adds them.
 
 ## Course materials
 
@@ -174,7 +183,7 @@ Suggested walkthrough: choose the course, open a topic, expand and collapse its 
 
 ## Open questions
 
-- Which course and professor will we use for the first demo?
+- Which of our two classes (ECON 351 with Hill, or Econ with Kaplin) do we demo first?
 - Does “compressible” mean collapse/expand, shorter summaries, mastery-based hiding, or a combination?
 - Who will prepare and check the study content?
 - Which source formats do we need for the MVP?

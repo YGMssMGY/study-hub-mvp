@@ -5,8 +5,15 @@ const root = document.documentElement;
 let savedTheme = null;
 try { savedTheme = localStorage.getItem(THEME_KEY); } catch { /* Storage unavailable: use the default. */ }
 root.dataset.theme = savedTheme === 'classic' ? 'classic' : 'hub';
+// Inside the Prof. AI side panel: no switch bar of its own; follow the page around it instead.
+const framed = window.self !== window.top;
+if (framed) root.classList.add('framed');
+window.addEventListener('storage', event => {
+  if (event.key === THEME_KEY) root.dataset.theme = event.newValue === 'classic' ? 'classic' : 'hub';
+});
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (framed) return;
   const bar = document.createElement('div');
   bar.className = 'theme-bar';
   bar.innerHTML = `<div class="theme-bar-inner">

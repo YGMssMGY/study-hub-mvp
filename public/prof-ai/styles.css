@@ -178,3 +178,6 @@ html[data-theme="classic"]{
   .toggle.on .sw{background:var(--cardinal)}
 }
 .toggle{border:none;background:none;padding:0}
+/* Inside the side panel (see sidebar.js) the panel has its own header, so drop the site logo. */
+html.framed .lockup{display:none}
+html.framed .top{padding:8px 12px}

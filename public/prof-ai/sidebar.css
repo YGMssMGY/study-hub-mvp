@@ -1,0 +1,165 @@
+/* Prof. AI side panel (see sidebar.js). Study Hub look by default; the "Study tool" style is below. */
+
+.prof-ai-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 18px 0 8px;
+  border: 2px solid #1c1917;
+  border-radius: 999px;
+  background: #1c1917;
+  color: #faf7f2;
+  font: 800 14px/1 "Inter", system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #990000;
+}
+
+.prof-ai-toggle-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #990000;
+  color: #ffcc00;
+  font-size: 12px;
+}
+
+body.prof-ai-open .prof-ai-toggle {
+  display: none;
+}
+
+.prof-ai-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  width: min(440px, 100vw);
+  border-left: 2px solid #1c1917;
+  background: #faf7f2;
+  box-shadow: -8px 0 24px rgba(28, 25, 23, 0.18);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.prof-ai-panel.open {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.25s ease;
+}
+
+.prof-ai-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 6px 8px 6px 16px;
+  background: #1c1917;
+  color: #faf7f2;
+  font: 600 13px/1.2 "Inter", system-ui, sans-serif;
+}
+
+.prof-ai-panel-title {
+  margin-right: auto;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.prof-ai-panel-head a {
+  color: #d6d3d1;
+}
+
+.prof-ai-close {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: #292524;
+  color: #faf7f2;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.prof-ai-toggle:focus-visible,
+.prof-ai-close:focus-visible,
+.prof-ai-panel-head a:focus-visible {
+  outline: 3px solid #ffcc00;
+  outline-offset: 2px;
+}
+
+.prof-ai-panel iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+}
+
+/* On wide screens the page makes room for the panel instead of sitting under it. */
+@media (min-width: 1100px) {
+  body.prof-ai-open {
+    padding-right: 440px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prof-ai-panel,
+  .prof-ai-panel.open {
+    transition: none;
+  }
+}
+
+/* "Study tool" style */
+
+html[data-theme="classic"] .prof-ai-toggle {
+  border: 1px solid #990000;
+  border-radius: 0;
+  background: #990000;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+html[data-theme="classic"] .prof-ai-toggle-dot {
+  border-radius: 0;
+  background: #ffffff;
+  color: #990000;
+}
+
+html[data-theme="classic"] .prof-ai-panel {
+  border-left: 1px solid #deded7;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+html[data-theme="classic"] .prof-ai-panel-head {
+  border-bottom: 1px solid #deded7;
+  background: #fafaf8;
+  color: #252522;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html[data-theme="classic"] .prof-ai-panel-title {
+  font-weight: 500;
+}
+
+html[data-theme="classic"] .prof-ai-panel-head a {
+  color: #990000;
+}
+
+html[data-theme="classic"] .prof-ai-close {
+  border-radius: 0;
+  background: #ffffff;
+  color: #252522;
+}

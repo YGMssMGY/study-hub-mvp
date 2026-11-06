@@ -1,0 +1,15 @@
+{
+  "name": "study-tool",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env.local server.mjs",
+    "dev": "node --watch --env-file-if-exists=.env.local server.mjs",
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "build:sites": "node scripts/build-worker.mjs"
+  }
+}

@@ -181,3 +181,6 @@ html[data-theme="classic"]{
 /* Inside the side panel (see sidebar.js) the panel has its own header, so drop the site logo. */
 html.framed .lockup{display:none}
 html.framed .top{padding:8px 12px}
+/* Site-wide style switch inside the header (see /theme.js) */
+.header-switch:empty{display:none}
+@media (max-width:640px){.header-switch{order:5;width:100%}}

@@ -39,9 +39,7 @@ html[data-theme="hub"] {
     border-top: 4px solid var(--gold);
   }
 
-  .page-tools::before {
-    content: "Study Hub";
-    margin-right: auto;
+  .page-tools .home-link {
     color: var(--paper);
     font-family: "Libre Caslon Text", Georgia, serif;
     font-size: 22px;
@@ -510,7 +508,7 @@ html[data-theme="hub"] {
     .upload-panel { padding: 22px; box-shadow: 5px 5px 0 var(--red); }
     .desk-grid { box-shadow: 5px 5px 0 var(--red); }
     .review-panel { border-right: 0; border-bottom: 2px solid var(--ink); }
-    .page-tools::before { font-size: 18px; }
+    .page-tools .home-link { font-size: 18px; }
   }
 
   @media print {

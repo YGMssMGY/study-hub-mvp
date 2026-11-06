@@ -1,81 +1,55 @@
-/* Style switch bar, shown at the top of every page by /theme.js. */
-
-.theme-bar {
-  position: relative;
-  z-index: 30;
-  font-size: 13px;
-  line-height: 1.2;
-}
-
-.theme-bar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6px 16px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px 16px;
-}
-
-.theme-home {
-  text-decoration: none;
-}
-
-.theme-home:hover {
-  text-decoration: underline;
-}
+/* Style switch, placed by /theme.js inside each page's header (the element marked data-theme-slot). */
 
 .theme-switch {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   padding: 3px;
+  font-size: 13px;
+  line-height: 1;
 }
 
 .theme-switch-label {
-  padding: 0 8px 0 6px;
+  padding: 0 6px 0 8px;
 }
 
 .theme-switch button {
-  min-height: 36px;
-  padding: 0 14px;
+  min-height: 32px;
+  padding: 0 12px;
   border: 0;
   font: inherit;
   cursor: pointer;
 }
 
-/* Study Hub style */
+/* Study tool page: its header's home link (left side) */
 
-html[data-theme="hub"] .theme-bar {
-  background: #1c1917;
-  color: #faf7f2;
-  font-family: "Inter", system-ui, sans-serif;
-  font-weight: 600;
+.page-tools .home-link {
+  margin-right: auto;
+  text-decoration: none;
 }
 
-html[data-theme="hub"] .theme-home {
-  color: #faf7f2;
-}
+/* Study Hub style: the switch sits on the cardinal header */
 
 html[data-theme="hub"] .theme-switch {
   border-radius: 12px;
-  background: #292524;
+  background: #7a0000;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
 }
 
 html[data-theme="hub"] .theme-switch-label {
-  color: #a8a29e;
+  color: #f3d9d9;
+  font-weight: 600;
 }
 
 html[data-theme="hub"] .theme-switch button {
   border-radius: 9px;
   background: transparent;
-  color: #d6d3d1;
-  font-weight: 700;
+  color: #faf7f2;
 }
 
 html[data-theme="hub"] .theme-switch button[aria-pressed="true"] {
-  background: #ffcc00;
+  background: #faf7f2;
   color: #1c1917;
 }
 
@@ -84,23 +58,13 @@ html[data-theme="hub"] .theme-switch button:focus-visible {
   outline-offset: 2px;
 }
 
-/* Study tool style */
-
-html[data-theme="classic"] .theme-bar {
-  background: #fafaf8;
-  color: #252522;
-  border-bottom: 1px solid #deded7;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
-}
-
-html[data-theme="classic"] .theme-home {
-  color: #252522;
-}
+/* Study tool style: the switch sits on a white header */
 
 html[data-theme="classic"] .theme-switch {
   border: 1px solid #deded7;
   background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 
 html[data-theme="classic"] .theme-switch-label {
@@ -108,6 +72,7 @@ html[data-theme="classic"] .theme-switch-label {
 }
 
 html[data-theme="classic"] .theme-switch button {
+  min-height: 28px;
   background: #ffffff;
   color: #77776f;
   font-weight: 500;
@@ -121,4 +86,10 @@ html[data-theme="classic"] .theme-switch button[aria-pressed="true"] {
 html[data-theme="classic"] .theme-switch button:focus-visible {
   outline: 2px solid #990000;
   outline-offset: 2px;
+}
+
+html[data-theme="classic"] .page-tools .home-link {
+  color: #252522;
+  font-size: 13px;
+  font-weight: 500;
 }

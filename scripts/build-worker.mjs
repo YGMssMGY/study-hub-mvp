@@ -2,7 +2,7 @@ import './check.mjs';
 import { readFile, writeFile, readdir, mkdir, rm, cp } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
-const modules = ['lib/config.mjs', 'lib/schema.mjs', 'lib/security.mjs', 'lib/ai.mjs', 'public/study/demo.js', 'lib/study.mjs', 'api/study.js', 'worker/bridge.mjs'];
+const modules = ['lib/config.mjs', 'lib/schema.mjs', 'lib/security.mjs', 'lib/ai.mjs', 'public/study/demo.js', 'lib/study.mjs', 'public/prof-ai/profs.js', 'lib/tutor.mjs', 'api/study.js', 'worker/bridge.mjs'];
 let source = '// Built from the shared backend and browser assets. Do not edit this generated file.\n';
 for (const path of modules) {
   source += `\n// ${path}\n` + (await readFile(path, 'utf8')).replace(/^import .*;\n/gm, '').replace(/^export default /gm, '').replace(/^export /gm, '');

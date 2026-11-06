@@ -1129,3 +1129,18 @@ summary:focus-visible {
   .topic-card > svg { display: none; }
   .study-card { padding: 22px; }
 }
+
+/* Extra button sizes for Prof. AI links */
+
+.button--outline {
+  border: var(--border);
+  background: var(--white);
+  box-shadow: none;
+}
+
+.button--small {
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 18px;
+  font-size: 0.95rem;
+}

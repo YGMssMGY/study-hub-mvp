@@ -1,10 +1,12 @@
-import { STORAGE_KEY, allSubtopics, correctCount, isMastered, recordAttempt, prioritizedQuestions, focusIds, validSession } from './state.js';
+import { STORAGE_KEY, allSubtopics, correctCount, isMastered, recordAttempt, prioritizedQuestions, focusIds, validSession, DECK_KEY, emptyDeck, validDeck, schedule, addCard, dueCards, nextDue, waitLabel } from './state.js';
 import { demoStudy } from './demo.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const e = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 let study = null, files = [], queue = [], tab = 'practice', busy = false, apiStatus = null, toastTimer, saveTimer;
-const pending = new Set(), mastering = new Set();
+const pending = new Set(), mastering = new Set(), reviewed = new Map();
+let deck = emptyDeck(), reviewQueue = [];
+try { const saved = JSON.parse(localStorage.getItem(DECK_KEY)); if (validDeck(saved)) deck = saved; } catch { /* No review deck yet. */ }
 try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); if (validSession(saved)) study = saved; } catch { /* Fresh browser or unavailable storage. */ }
 
 function toast(message) {
@@ -15,6 +17,8 @@ function persist() {
   try { if (study) localStorage.setItem(STORAGE_KEY, JSON.stringify(study)); }
   catch { toast('This browser could not save progress. Download a study backup in Settings.'); }
 }
+function persistDeck() { try { localStorage.setItem(DECK_KEY, JSON.stringify(deck)); } catch { /* persist() already warns about storage. */ } }
+function openReview() { reviewQueue = dueCards(deck).map(c => c.id); reviewed.clear(); tab = 'review'; renderWorkspace(); }
 function scheduleSave() { clearTimeout(saveTimer); saveTimer = setTimeout(persist, 500); }
 async function api(action, data = {}) {
   let response;
@@ -48,7 +52,7 @@ function renderLanding() {
       <button class="button primary upload-action" id="build-study" disabled>Create session <span>→</span></button>
       <div id="upload-feedback" aria-live="polite"></div>
       <p class="privacy-note">Files are processed by AI. Progress is saved in this browser.<br>For diagrams, export slides as PDF.</p>
-      <div class="upload-links">${study ? `<button id="resume-study" class="text-button">Resume ${e(study.title)}</button>` : ''}<button class="text-button" id="explore-sample">Open sample</button></div>
+      <div class="upload-links">${study ? `<button id="resume-study" class="text-button">Resume ${e(study.title)}</button>${dueCards(deck).length ? `<button id="open-review" class="text-button">Review ${dueCards(deck).length} due</button>` : ''}` : ''}<button class="text-button" id="explore-sample">Open sample</button></div>
     </section>
   </section>`;
   $('#file-input').addEventListener('change', event => addFiles([...event.target.files]));
@@ -62,6 +66,7 @@ function renderLanding() {
     study = demoStudy(); queue = prioritizedQuestions(study); tab = 'practice'; persist(); renderWorkspace();
   });
   $('#resume-study')?.addEventListener('click', () => { if (!queue.length) queue = prioritizedQuestions(study); renderWorkspace(); });
+  $('#open-review')?.addEventListener('click', openReview);
   renderFiles();
 }
 function uploadError(message) { if ($('#upload-feedback')) $('#upload-feedback').innerHTML = `<p class="upload-error" role="alert">${e(message)}</p>`; }
@@ -99,7 +104,7 @@ async function buildStudy() {
     const result = await api('analyze', { files: await Promise.all(files.map(readFile)) });
     study = { ...result, version: 1, attempts: [], drafts: {}, files: files.map(f => f.name), demo: false };
     if (!validSession(study)) throw new Error('The study set could not be loaded. Please try again.');
-    clearTimeout(saveTimer); persist(); files = []; queue = prioritizedQuestions(study); tab = 'practice'; renderWorkspace(); toast('Session created.');
+    deck.cards = deck.cards.filter(c => !c.demo); persistDeck(); clearTimeout(saveTimer); persist(); files = []; queue = prioritizedQuestions(study); tab = 'practice'; renderWorkspace(); toast('Session created.');
   } catch (error) { uploadError(error.message); }
   finally { clearInterval(timer); busy = false; if ($('#file-input')) { $('#file-input').disabled = false; $('#explore-sample').disabled = false; renderFiles(); } }
 }
@@ -117,26 +122,29 @@ function renderWorkspace() {
       <section class="desk-panel review-panel"><div class="panel-header"><h2>Review notes <span class="panel-counter">${new Set(study.attempts.map(a => a.subtopicId)).size}</span></h2></div><div class="panel-content" id="review-content"></div></section>
     <aside class="practice-column" aria-label="Practice and to-do"><section class="practice-panel" aria-label="Practice problems">
       <div class="panel-header practice-header"><h2>Practice problems</h2></div>
-      <div class="tab-bar" role="tablist" aria-label="Practice views"><button class="tab" role="tab" data-tab="practice" aria-selected="${tab === 'practice'}">Practice <span class="tab-count">${study.questions.length}</span></button><button class="tab" role="tab" data-tab="uploaded" aria-selected="${tab === 'uploaded'}">Uploaded <span class="tab-count">${originalCount}</span></button>${tab.startsWith('examples:') ? `<button class="tab" role="tab" data-tab="${e(tab)}" aria-selected="true">${e(subtopic(tab.slice(9))?.title)} · Examples</button>` : ''}</div>
-      <div class="practice-toolbar"><span class="muted small" id="feed-label">${tab.startsWith('examples:') ? 'Completed examples' : `${study.attempts.length} answered`}</span><button id="shuffle" class="text-button">Shuffle <span>⇄</span></button></div>
+      <div class="tab-bar" role="tablist" aria-label="Practice views"><button class="tab" role="tab" data-tab="practice" aria-selected="${tab === 'practice'}">Practice <span class="tab-count">${study.questions.length}</span></button><button class="tab" role="tab" data-tab="uploaded" aria-selected="${tab === 'uploaded'}">Uploaded <span class="tab-count">${originalCount}</span></button><button class="tab" role="tab" data-tab="review" aria-selected="${tab === 'review'}">Review <span class="tab-count">${dueCards(deck).length}</span></button>${tab.startsWith('examples:') ? `<button class="tab" role="tab" data-tab="${e(tab)}" aria-selected="true">${e(subtopic(tab.slice(9))?.title)} · Examples</button>` : ''}</div>
+      <div class="practice-toolbar"><span class="muted small" id="feed-label">${tab.startsWith('examples:') ? 'Completed examples' : tab === 'review' ? 'Due now · all your topics, mixed' : `${study.attempts.length} answered · concepts mixed`}</span><button id="shuffle" class="text-button">Shuffle <span>⇄</span></button></div>
       <div class="practice-feed" id="practice-feed" role="tabpanel"></div>
     </section><section class="desk-panel todo-panel"><div class="panel-header"><h2>To-do <span class="panel-counter">${total - mastered}</span></h2></div><div class="panel-content" id="todo-content"></div></section></aside></div>
-    <div class="workspace-notice"><span>Mastery: 2 correct answers per topic.</span><span>Saved locally · Check AI feedback</span></div>
+    <div class="workspace-notice"><span>Mastery: 2 correct answers per topic. Answered questions come back in Review after 1, 3, 7, 14 and 30 days; missed ones after 10 minutes.</span><span>Saved locally · Check AI feedback</span></div>
   </section>`;
   renderTodo(); renderNotes(); renderFeed();
   $('#new-material').addEventListener('click', renderLanding); $('#sample-upload')?.addEventListener('click', renderLanding);
-  document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => { tab = button.dataset.tab; renderWorkspace(); }));
-  $('#shuffle').addEventListener('click', () => { queue = prioritizedQuestions(study); tab = 'practice'; renderWorkspace(); toast('Shuffled. Unmastered topics prioritized.'); });
+  document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => { if (button.dataset.tab === 'review') return openReview(); tab = button.dataset.tab; renderWorkspace(); }));
+  $('#shuffle').addEventListener('click', () => { queue = prioritizedQuestions(study); tab = 'practice'; renderWorkspace(); toast('Shuffled. Concepts mixed, unmastered ones first.'); });
   $('#export-pdf').addEventListener('click', printNotes); $('#export-markdown').addEventListener('click', exportMarkdown); $('#export-backup').addEventListener('click', downloadBackup);
 }
 function renderTodo() {
   const total = allSubtopics(study).length, mastered = allSubtopics(study).filter(s => isMastered(study, s.id)).length;
   const progress = `<div class="progress-meta"><span>${mastered} of ${total} concepts mastered</span><span>${Math.round(mastered / total * 100)}%</span></div><progress class="progress-track" value="${mastered}" max="${total}" aria-label="Concepts mastered">${mastered}/${total}</progress>`;
-  $('#todo-content').innerHTML = progress + (mastered === total && !mastering.size ? `<div class="mastered-all"><h3>All topics mastered.</h3><p>Continue practicing or export your notes.</p></div>` : study.topics.map(topic => {
+  const due = dueCards(deck).length, upcoming = nextDue(deck);
+  const review = due ? `<button class="text-button review-callout" id="todo-review">${due} question${due === 1 ? '' : 's'} due for review →</button>` : upcoming ? `<p class="review-callout muted small">Next review in ${waitLabel(upcoming - Date.now())}.</p>` : '';
+  $('#todo-content').innerHTML = progress + review + (mastered === total && !mastering.size ? `<div class="mastered-all"><h3>All topics mastered.</h3><p>Continue practicing or export your notes.</p></div>` : study.topics.map(topic => {
     const subs = topic.subtopics.filter(s => !isMastered(study, s.id) || mastering.has(s.id));
     if (!subs.length) return '';
     return `<div class="topic-group"><h3 class="topic-title">${e(topic.title)}</h3>${subs.map(s => `<div class="todo-item ${correctCount(study, s.id) === 1 ? 'practiced' : ''} ${mastering.has(s.id) ? 'mastering' : ''}" data-todo="${e(s.id)}"><span class="todo-square" aria-hidden="true"></span><div class="todo-text"><div class="todo-item-title">${e(s.title)}</div><div class="todo-source">${e(s.source)}</div></div><span class="todo-score">${Math.min(correctCount(study, s.id), 2)}/2</span></div>`).join('')}</div>`;
   }).join(''));
+  $('#todo-review')?.addEventListener('click', openReview);
 }
 function renderNotes(flashId) {
   const attempted = new Set(study.attempts.map(a => a.subtopicId));
@@ -169,7 +177,36 @@ function questionCard(q, index, completedOnly = false) {
 function feedbackHTML(result) {
   return `<div class="feedback ${result.correct ? '' : 'incorrect'}"><div class="feedback-title">${result.correct ? '✓ Correct' : 'Incorrect'}</div><div>${e(result.feedback)}</div>${!result.correct && result.referenceAnswer ? `<div class="reference-answer"><span>Reference answer</span>${e(result.referenceAnswer)}</div>` : ''}</div>`;
 }
+function reviewCard(card, index) {
+  const result = reviewed.get(card.id);
+  return `<article class="question-card" data-rid="${e(card.id)}"><div class="question-topline"><span class="question-index">${String(index + 1).padStart(2, '0')}.</span><span class="question-tag">REVIEW · ${card.kind === 'written' ? 'WRITTEN' : 'MULTIPLE CHOICE'}</span></div><h3>${e(card.prompt)}</h3><div class="concept-label">${e(card.session)} · ${e(card.concept)}</div>
+    ${result ? `<div class="attempt-answer"><span>Your answer</span>${e(result.answer)}</div>${feedbackHTML(result)}<p class="review-next">${result.correct ? 'Comes back' : 'Try it again'} in ${waitLabel(Date.parse(card.due) - Date.parse(card.last))}.</p>` : `<form data-review-form="${e(card.id)}">${card.kind === 'multiple-choice' ? `<div class="answer-options">${card.options.map((option, i) => `<label class="option"><input type="radio" name="answer" value="${e(option)}" required><span class="option-letter">${String.fromCharCode(65 + i)}</span><span class="option-text">${e(option)}</span></label>`).join('')}</div>` : `<label class="answer-label" for="review-${e(card.id)}">Your answer</label><textarea class="written-answer" name="answer" id="review-${e(card.id)}" placeholder="Type your answer…" maxlength="8000" required></textarea>`}<div class="question-bottom"><span class="question-source">↳ ${e(card.source)}</span><button type="submit" class="button primary">Check answer <span>↗</span></button></div><div class="answer-feedback" aria-live="polite"></div></form>`}
+  </article>`;
+}
+function renderReview() {
+  const cards = reviewQueue.map(id => deck.cards.find(c => c.id === id)).filter(Boolean), upcoming = nextDue(deck);
+  const next = upcoming ? ` Next review in ${waitLabel(upcoming - Date.now())}.` : '';
+  $('#practice-feed').innerHTML = cards.length
+    ? cards.map(reviewCard).join('') + (cards.every(c => reviewed.has(c.id)) ? `<div class="practice-end"><p>Review done.${next}</p></div>` : '')
+    : `<div class="empty-panel"><p>${deck.cards.length ? `Nothing is due.${next}` : 'Nothing to review yet. Questions you answer in Practice come back here after 1, 3, 7, 14 and 30 days, mixed across all your topics.'}</p></div>`;
+  document.querySelectorAll('[data-review-form]').forEach(form => form.addEventListener('submit', event => { event.preventDefault(); submitReview(form); }));
+}
+async function submitReview(form) {
+  const card = deck.cards.find(c => c.id === form.dataset.reviewForm), answer = String(new FormData(form).get('answer') || '').trim();
+  if (!card || !answer || pending.has(card.id)) return;
+  const output = $('.answer-feedback', form), submit = $('button[type=submit]', form);
+  const finish = result => {
+    pending.delete(card.id); schedule(card, result.correct); persistDeck(); reviewed.set(card.id, { ...result, answer });
+    if (tab !== 'review' || !$('#practice-feed')) return;
+    const scroll = $('#practice-feed').scrollTop; renderWorkspace(); $('#practice-feed').scrollTop = scroll;
+  };
+  if (card.demo && card.kind === 'multiple-choice') return finish({ correct: answer === card.demoAnswer, feedback: card.demoExplanation, referenceAnswer: card.demoAnswer });
+  pending.add(card.id); submit.disabled = true; submit.textContent = 'Checking…'; output.textContent = '';
+  try { finish(await api(card.demo ? 'grade-demo' : 'grade', card.demo ? { questionId: card.id, answer } : { questionToken: card.token, answer })); }
+  catch (error) { output.innerHTML = `<p class="inline-error" role="alert">${e(error.message)}</p>`; pending.delete(card.id); submit.disabled = false; submit.innerHTML = 'Check answer <span>↗</span>'; }
+}
 function renderFeed() {
+  if (tab === 'review') return renderReview();
   let questions;
   if (tab.startsWith('examples:')) {
     const attempted = new Set(study.attempts.map(a => a.questionId));
@@ -197,7 +234,7 @@ async function submitAnswer(form) {
     pending.delete(q.id);
     if (study !== activeStudy) return;
     const before = isMastered(study, q.subtopicId);
-    recordAttempt(study, q, answer, result); if (study.drafts) delete study.drafts[q.id];
+    if (recordAttempt(study, q, answer, result)) { addCard(deck, study, q, result.correct); persistDeck(); } if (study.drafts) delete study.drafts[q.id];
     const justMastered = !before && isMastered(study, q.subtopicId);
     if (justMastered) mastering.add(q.subtopicId);
     persist(); const scroll = $('#practice-feed').scrollTop; renderWorkspace(); $('#practice-feed').scrollTop = scroll; renderNotes(q.subtopicId);
@@ -273,9 +310,12 @@ $('#backup-input').addEventListener('change', async event => {
   } catch (error) { toast(error.message); } finally { event.target.value = ''; }
 });
 $('#clear-progress').addEventListener('click', () => {
-  if (!confirm('Clear the study session saved in this browser? Download a backup first if you want to keep it.')) return;
-  clearTimeout(saveTimer); localStorage.removeItem(STORAGE_KEY); study = null; files = []; queue = []; $('#settings-dialog').close(); renderLanding(); toast('Browser progress cleared.');
+  if (!confirm('Clear the study session and review schedule saved in this browser? Download a backup first if you want to keep it.')) return;
+  clearTimeout(saveTimer); localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(DECK_KEY); deck = emptyDeck(); study = null; files = []; queue = []; $('#settings-dialog').close(); renderLanding(); toast('Browser progress cleared.');
 });
 $('#settings-dialog').addEventListener('click', event => { if (event.target === $('#settings-dialog')) { const r = event.target.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) event.target.close(); } });
-if (study) { queue = prioritizedQuestions(study); renderWorkspace(); } else renderLanding();
+if (study) {
+  queue = prioritizedQuestions(study);
+  if (new URLSearchParams(location.search).has('review')) { history.replaceState(null, '', location.pathname); openReview(); } else renderWorkspace();
+} else renderLanding();
 checkConnection();

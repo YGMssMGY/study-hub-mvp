@@ -2,7 +2,7 @@
 
 A course project that brings scattered study materials into one easy-to-use interface, with content tailored to a course and professor.
 
-**Status:** Prototype on the `merge-study-tool` branch, not yet merged or deployed. Built: landing page, a course page for each ECON 351x section (Hill and Kaplan) with its own exams and topics, click-to-start topic briefs, the AI study tool (`/study/`), the Prof. AI tutor (`/prof-ai/` and a side panel on the study tool), and a site-wide style switch (USC / Lockin). Not built: hand-written topic guides, saved progress, accounts. The AI features have not been tested against the live API on the deployed site yet.  
+**Status:** Prototype on the `merge-study-tool` branch, not yet merged or deployed. Built: landing page, a course page for each ECON 351x section (Hill and Kaplan) with its own exams and topics, click-to-start topic briefs, the AI study tool (`/study/`), the Prof. AI tutor (`/prof-ai/` and a side panel on the study tool), and a site-wide style switch (USC / Lockin). Following director feedback, the study tool is now built around **interleaving** and **spaced repetition** (see below). Not built: hand-written topic guides, accounts, progress synced across devices. The AI features have not been tested against the live API on the deployed site yet.  
 **Working name:** Study Hub (team can rename).  
 **Course / section:** TODO  
 **Team:** TODO  
@@ -43,9 +43,11 @@ Professor-specific content means alignment with the professor's course materials
 2. The course page lists that professor's topics, grouped by exam (13 topics each, over three exams; Kaplan's Exam 3 is in finals week).
 3. Click a topic. The study tool opens and builds a session (topic notes, practice questions, review notes) from that topic's short brief, with no upload needed.
 4. Or open the study tool and upload your own PDF, Word or text files.
-5. Ask Prof. AI (its own page, or the "Ask Prof. AI" side panel on the study tool) to explain a topic or quiz you, in that professor's framing.
-6. Follow the "Straight from the source" links on each course page to the original slides and practice sets in Google Drive.
-7. Use the Style switch in the header to change the whole site between **USC** (cardinal and gold, the Study Hub look) and **Lockin** (plain white, the study tool's own look). The choice is remembered in the browser.
+5. Practice is **interleaved**: the question feed never puts two questions from the same concept back to back, and each exam on a course page has a "Mixed practice" link that builds one session from up to four of that exam's topics.
+6. Practice is **spaced**: every question you answer goes into a review deck saved in the browser. It comes back in the study tool's Review tab after 1, 3, 7, 14 and then 30 days as you keep getting it right, and after 10 minutes when you miss it. The deck outlives the session, so Review mixes questions from every topic you have studied.
+7. Ask Prof. AI (its own page, or the "Ask Prof. AI" side panel on the study tool) to explain a topic or quiz you, in that professor's framing.
+8. Follow the "Straight from the source" links on each course page to the original slides and practice sets in Google Drive.
+9. Use the Style switch in the header to change the whole site between **USC** (cardinal and gold, the Study Hub look) and **Lockin** (plain white, the study tool's own look). The choice is remembered in the browser.
 
 The original plan below (expandable topic guides with per-topic source references and related resources) is only partly covered: topics link to briefs and AI sessions rather than hand-written guides.
 
@@ -136,7 +138,7 @@ Copy this section for each demo topic, or move the completed entries into the ch
 The site is static HTML and CSS plus one small Node API for the study tool:
 
 - `public/index.html` is the landing page and `public/courses/` holds the two course pages. `public/styles.css` is the USC style, `public/classic.css` the Lockin overrides, and `public/theme.js` / `theme.css` the header style switch.
-- `public/study/` is the study tool (upload files → topic notes, practice questions, review notes). `autostart.js` starts a session when a course page links to `/study/?topic=<id>`; `hub.css` gives the tool the USC style.
+- `public/study/` is the study tool (upload files → topic notes, practice questions, review notes). `state.js` holds the interleaving order and the spaced-review schedule (`REVIEW_DAYS`); the review deck is stored in the browser under `study-review-v1`. `autostart.js` starts a session when a course page links to `/study/?topic=<id>` (or `?topics=<id>,<id>` for mixed practice); `hub.css` gives the tool the USC style.
 - `public/materials/` holds the topic briefs and `topics.json`, which maps each topic id to its brief.
 - `public/prof-ai/` is the Prof. AI tutor page. `profs.js` holds each professor's course outline, and `sidebar.js` / `sidebar.css` add it as a side panel on the study tool.
 - `api/study.js` handles both tools (study sessions, plus `tutor-chat` and `tutor-quiz` for Prof. AI) and uses `lib/` to talk to the OpenAI API.
@@ -187,7 +189,7 @@ Keep open decisions marked **TODO** until the team agrees.
 - **Demo topics:** TODO
 - **Presenter(s):** TODO
 - **Demo link / recording:** TODO
-- **Known limitations:** the AI features need the server and an access code (the Python preview shows pages only); Kaplan's Ch 12 and 13 briefs are general overviews until slides are in Drive; Prof. AI ignores uploaded images; no saved progress or accounts.
+- **Known limitations:** the AI features need the server and an access code (the Python preview shows pages only); Kaplan's Ch 12 and 13 briefs are general overviews until slides are in Drive; Prof. AI ignores uploaded images; progress and the review schedule live in one browser only (no accounts), and nothing reminds a student when reviews are due.
 
 Suggested walkthrough: choose the course, open a topic, expand and collapse its guide, visit an original source, and open a related resource.
 

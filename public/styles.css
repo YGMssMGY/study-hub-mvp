@@ -941,6 +941,12 @@ summary:focus-visible {
   font-weight: 600;
 }
 
+.exam-group-head .mix-link {
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
 .topic-cards {
   display: grid;
   gap: 14px;

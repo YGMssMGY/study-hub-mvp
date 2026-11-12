@@ -5,7 +5,7 @@ import { normalizeQuestions, publicQuestion, grade, gradeDemo, analyze, generate
 import { createCipheriv, createHash, randomBytes } from 'node:crypto';
 import { studySchema, validateSchema } from '../lib/schema.mjs';
 import { demoStudy } from '../public/study/demo.js';
-import { correctCount, isMastered, recordAttempt, focusIds, prioritizedQuestions, validSession } from '../public/study/state.js';
+import { correctCount, isMastered, recordAttempt, focusIds, prioritizedQuestions, validSession, interleave, emptyDeck, validDeck, addCard, schedule, dueCards, nextDue, waitLabel } from '../public/study/state.js';
 
 const oldKey = process.env.OPENAI_API_KEY, oldSecret = process.env.APP_SECRET, realFetch = globalThis.fetch;
 before(() => { process.env.OPENAI_API_KEY = 'test-key-not-a-real-secret'; process.env.APP_SECRET = 'test-secret'; });
@@ -103,4 +103,36 @@ test('sample written answers are graded by AI using the server reference', async
   const result = await gradeDemo({ questionId: 'demo-1', answer: 'I would study on separate days.' });
   assert.ok(called); assert.equal(result.correct, true);
   await assert.rejects(gradeDemo({ questionId: 'invented', answer: 'text' }));
+});
+
+test('interleaving keeps priority order but separates neighbours from the same concept', () => {
+  assert.deepEqual(interleave(['a1', 'a2', 'a3', 'b1', 'c1'], x => x[0]), ['a1', 'b1', 'a2', 'c1', 'a3']);
+  assert.deepEqual(interleave(['a1', 'a2'], x => x[0]), ['a1', 'a2']);
+  const s = demoStudy(), byId = new Map(s.questions.map(q => [q.id, q.subtopicId]));
+  for (let i = 0; i < 50; i++) {
+    const order = prioritizedQuestions(s).map(id => byId.get(id));
+    assert.ok(order.every((sub, n) => n === 0 || sub !== order[n - 1]));
+  }
+});
+test('spaced review: correct answers move out along 1, 3, 7, 14, 30 days and a miss comes back in 10 minutes', () => {
+  const s = demoStudy(), deck = emptyDeck(), day = 86400000, t0 = Date.parse('2026-11-12T12:00:00Z');
+  const card = addCard(deck, s, s.questions[0], true, t0);
+  assert.equal(card.concept, 'Active recall'); assert.equal(card.session, 'Learning strategies');
+  assert.equal(addCard(deck, s, s.questions[0], true, t0), null);
+  assert.equal(dueCards(deck, t0).length, 0); assert.equal(nextDue(deck, t0), t0 + day);
+  assert.equal(dueCards(deck, t0 + day).length, 1);
+  let now = t0 + day;
+  for (const days of [3, 7, 14, 30, 30]) { schedule(card, true, now); assert.equal(Date.parse(card.due) - now, days * day); now = Date.parse(card.due); }
+  schedule(card, false, now); assert.equal(Date.parse(card.due) - now, 600000); assert.equal(card.streak, 0);
+  schedule(card, true, now); assert.equal(Date.parse(card.due) - now, day);
+  assert.ok(validDeck(JSON.parse(JSON.stringify(deck)))); assert.ok(!validDeck({ version: 1, cards: [{ id: 'x' }] }));
+  assert.equal(waitLabel(600000), '10 min'); assert.equal(waitLabel(3 * day), '3 days'); assert.equal(waitLabel(day), '1 day');
+});
+test('the review queue mixes concepts and sessions instead of blocking them', () => {
+  const s = demoStudy(), other = { ...demoStudy(), title: 'Other session' }, deck = emptyDeck(), t0 = Date.parse('2026-11-12T12:00:00Z');
+  for (const q of s.questions) addCard(deck, s, q, false, t0);
+  for (const q of other.questions.slice(0, 2)) addCard(deck, other, { ...q, id: `o-${q.id}` }, false, t0 + 1);
+  const due = dueCards(deck, t0 + 3600000);
+  assert.equal(due.length, 8);
+  assert.ok(due.every((c, n) => n === 0 || c.session !== due[n - 1].session || c.subtopicId !== due[n - 1].subtopicId));
 });

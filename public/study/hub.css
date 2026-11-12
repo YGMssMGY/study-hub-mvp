@@ -34,7 +34,7 @@ html[data-theme="hub"] {
   .page-tools {
     max-width: none;
     min-height: 64px;
-    padding: 10px max(16px, calc((100vw - 1200px) / 2 + 16px));
+    padding: 10px max(16px, calc((100vw - 1600px) / 2 + 16px));
     background: var(--red);
     border-top: 4px solid var(--gold);
   }
@@ -165,7 +165,7 @@ html[data-theme="hub"] {
   /* Workspace */
 
   .workspace {
-    max-width: 1200px;
+    max-width: 1600px;
     padding-top: 24px;
   }
 

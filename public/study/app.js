@@ -9,6 +9,40 @@ let deck = emptyDeck(), reviewQueue = [];
 try { const saved = JSON.parse(localStorage.getItem(DECK_KEY)); if (validDeck(saved)) deck = saved; } catch { /* No review deck yet. */ }
 try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); if (validSession(saved)) study = saved; } catch { /* Fresh browser or unavailable storage. */ }
 
+// Layout: the dividers between the three panels can be dragged, and "Full page" drops the page chrome
+// so the panels fill the window. Both are remembered in this browser.
+const LAYOUT_KEY = 'study-layout-v1', DEFAULT_LAYOUT = { x: 50, y: 70, full: false };
+let layout = { ...DEFAULT_LAYOUT };
+try { const saved = JSON.parse(localStorage.getItem(LAYOUT_KEY)); if (saved && typeof saved === 'object') layout = { ...layout, ...saved }; } catch { /* Default layout. */ }
+const clampSplit = value => Math.min(80, Math.max(20, Number(value) || 50));
+function applyLayout(save = false) {
+  layout.x = clampSplit(layout.x); layout.y = clampSplit(layout.y);
+  document.body.style.setProperty('--split-x', `${layout.x}%`); document.body.style.setProperty('--split-y', `${layout.y}%`);
+  document.body.classList.toggle('full-page', Boolean(layout.full));
+  if (save) try { localStorage.setItem(LAYOUT_KEY, JSON.stringify(layout)); } catch { /* Not remembered. */ }
+}
+function bindSplit(handle, axis) {
+  const box = handle.parentElement;
+  const percent = event => { const r = box.getBoundingClientRect(); return axis === 'x' ? (event.clientX - r.left) / r.width * 100 : (event.clientY - r.top) / r.height * 100; };
+  let active = false;
+  handle.addEventListener('pointerdown', event => {
+    event.preventDefault(); active = true; handle.classList.add('dragging');
+    try { handle.setPointerCapture(event.pointerId); } catch { /* Dragging still works while the pointer stays on the handle. */ }
+  });
+  handle.addEventListener('pointermove', event => { if (active) { layout[axis] = percent(event); applyLayout(); } });
+  const stop = () => { if (!active) return; active = false; handle.classList.remove('dragging'); applyLayout(true); };
+  handle.addEventListener('pointerup', stop); handle.addEventListener('pointercancel', stop);
+  handle.addEventListener('dblclick', () => { layout[axis] = DEFAULT_LAYOUT[axis]; applyLayout(true); });
+  handle.addEventListener('keydown', event => {
+    const step = (axis === 'x' ? { ArrowLeft: -3, ArrowRight: 3 } : { ArrowUp: -3, ArrowDown: 3 })[event.key];
+    if (step) { event.preventDefault(); layout[axis] += step; applyLayout(true); }
+  });
+}
+function toggleFullPage() { layout.full = !layout.full; applyLayout(true); const b = $('#full-page'); if (b) { b.innerHTML = fullPageLabel(); b.setAttribute('aria-pressed', layout.full); } }
+function fullPageLabel() { return layout.full ? 'Exit full page <span>×</span>' : 'Full page <span>⤢</span>'; }
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && layout.full && document.body.classList.contains('in-workspace') && !$('#settings-dialog').open) toggleFullPage(); });
+applyLayout();
+
 function toast(message) {
   const box = $('#toast'); box.textContent = message; box.hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { box.hidden = true; }, 4500);
@@ -116,11 +150,11 @@ function renderWorkspace() {
   const originalCount = study.questions.filter(q => q.origin === 'uploaded').length;
   $('#main').innerHTML = `<section class="workspace">
     <div class="workspace-heading"><h1>${e(study.title)}</h1><p>${e(study.files?.join(' · ') || '')}</p></div>
-    <div class="workspace-tools"><button class="button secondary" id="new-material">Upload materials <span>+</span></button><details class="export-menu"><summary class="button secondary">Export notes <span>↓</span></summary><div class="export-options"><button id="export-pdf">Print / Save as PDF</button><button id="export-markdown">Markdown</button><button id="export-backup">Study backup</button></div></details></div>
+    <div class="workspace-tools"><button class="button secondary" id="new-material">Upload materials <span>+</span></button><div class="workspace-tools-right"><button class="button secondary" id="full-page" aria-pressed="${Boolean(layout.full)}" title="Fill the window with the study panels (Esc to exit)">${fullPageLabel()}</button><details class="export-menu"><summary class="button secondary">Export notes <span>↓</span></summary><div class="export-options"><button id="export-pdf">Print / Save as PDF</button><button id="export-markdown">Markdown</button><button id="export-backup">Study backup</button></div></details></div></div>
     ${study.demo ? `<div class="sample-banner"><span>Sample materials · Written answers are graded by AI.</span><button id="sample-upload" class="text-button">Upload materials →</button></div>` : ''}
-    <div class="desk-grid">
+    <div class="desk-grid"><div class="split-handle split-x" role="separator" aria-orientation="vertical" tabindex="0" aria-label="Resize notes and practice. Drag, or use the arrow keys; double-click to reset." title="Drag to resize · double-click to reset"></div>
       <section class="desk-panel review-panel"><div class="panel-header"><h2>Review notes <span class="panel-counter">${new Set(study.attempts.map(a => a.subtopicId)).size}</span></h2></div><div class="panel-content" id="review-content"></div></section>
-    <aside class="practice-column" aria-label="Practice and to-do"><section class="practice-panel" aria-label="Practice problems">
+    <aside class="practice-column" aria-label="Practice and to-do"><div class="split-handle split-y" role="separator" aria-orientation="horizontal" tabindex="0" aria-label="Resize practice and to-do. Drag, or use the arrow keys; double-click to reset." title="Drag to resize · double-click to reset"></div><section class="practice-panel" aria-label="Practice problems">
       <div class="panel-header practice-header"><h2>Practice problems</h2></div>
       <div class="tab-bar" role="tablist" aria-label="Practice views"><button class="tab" role="tab" data-tab="practice" aria-selected="${tab === 'practice'}">Practice <span class="tab-count">${study.questions.length}</span></button><button class="tab" role="tab" data-tab="uploaded" aria-selected="${tab === 'uploaded'}">Uploaded <span class="tab-count">${originalCount}</span></button><button class="tab" role="tab" data-tab="review" aria-selected="${tab === 'review'}">Review <span class="tab-count">${dueCards(deck).length}</span></button>${tab.startsWith('examples:') ? `<button class="tab" role="tab" data-tab="${e(tab)}" aria-selected="true">${e(subtopic(tab.slice(9))?.title)} · Examples</button>` : ''}</div>
       <div class="practice-toolbar"><span class="muted small" id="feed-label">${tab.startsWith('examples:') ? 'Completed examples' : tab === 'review' ? 'Due now · all your topics, mixed' : `${study.attempts.length} answered · concepts mixed`}</span><button id="shuffle" class="text-button">Shuffle <span>⇄</span></button></div>
@@ -129,6 +163,7 @@ function renderWorkspace() {
     <div class="workspace-notice"><span>Mastery: 2 correct answers per topic. Answered questions come back in Review after 1, 3, 7, 14 and 30 days; missed ones after 10 minutes.</span><span>Saved locally · Check AI feedback</span></div>
   </section>`;
   renderTodo(); renderNotes(); renderFeed();
+  bindSplit($('.split-x'), 'x'); bindSplit($('.split-y'), 'y'); $('#full-page').addEventListener('click', toggleFullPage);
   $('#new-material').addEventListener('click', renderLanding); $('#sample-upload')?.addEventListener('click', renderLanding);
   document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => { if (button.dataset.tab === 'review') return openReview(); tab = button.dataset.tab; renderWorkspace(); }));
   $('#shuffle').addEventListener('click', () => { queue = prioritizedQuestions(study); tab = 'practice'; renderWorkspace(); toast('Shuffled. Concepts mixed, unmastered ones first.'); });

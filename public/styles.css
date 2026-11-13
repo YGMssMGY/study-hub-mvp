@@ -58,6 +58,12 @@ h3 {
 h1 { font-size: clamp(2.7rem, 5.8vw, 5rem); letter-spacing: -0.04em; line-height: 0.98; }
 h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
 h3 { font-size: 1.25rem; letter-spacing: -0.01em; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+::selection { background: var(--gold); color: var(--ink); }
+input, textarea { caret-color: var(--cardinal); }
+html { scrollbar-color: var(--cardinal) var(--light); accent-color: var(--cardinal); }
 
 p { margin: 0 0 1em; }
 
@@ -374,7 +380,6 @@ summary:focus-visible {
   height: 8px;
   border-radius: 999px;
   background: var(--gold);
-  animation: pulse 1.6s ease-out infinite;
 }
 
 .sticker-row {
@@ -680,7 +685,7 @@ summary:focus-visible {
   border: var(--border);
   border-radius: 28px;
   background: var(--white);
-  box-shadow: var(--pop);
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.06), 0 18px 40px -24px rgba(92, 0, 0, 0.35);
 }
 
 .tool-copy {
@@ -743,7 +748,6 @@ summary:focus-visible {
   border-radius: 28px;
   background: var(--ink);
   color: var(--light);
-  box-shadow: var(--pop);
 }
 
 .cta-band h2 {
@@ -853,6 +857,8 @@ summary:focus-visible {
 }
 
 .course-aside {
+  position: sticky;
+  top: 24px;
   flex: 1 1 300px;
   min-width: 0;
   display: flex;
@@ -885,12 +891,6 @@ summary:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.study-card-kicker {
-  color: var(--gold);
-  font-size: 0.82rem;
-  font-weight: 700;
 }
 
 .study-card-title {
@@ -965,7 +965,7 @@ summary:focus-visible {
   background: var(--white);
   color: var(--ink);
   text-decoration: none;
-  box-shadow: 5px 5px 0 var(--line);
+  box-shadow: none;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -1030,7 +1030,7 @@ summary:focus-visible {
 
 .source-panel {
   background: var(--white);
-  box-shadow: 6px 6px 0 var(--line);
+  border-color: var(--line);
 }
 
 .source-panel h2,

@@ -291,7 +291,6 @@ html[data-theme="classic"] {
     color: var(--ink);
   }
 
-  .study-card-kicker { color: var(--cardinal); font-weight: 500; }
   .study-card-title { font-weight: 500; letter-spacing: -0.4px; }
   .study-card-text { color: var(--gray); }
 

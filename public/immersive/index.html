@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" class="immersive-home">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#3d0505">
+  <meta name="description" content="Study Hub: your ECON 351x slides, question banks and past exams folded into one guide, with mixed practice and spaced review.">
+  <title>Study Hub · one guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/theme.css">
+  <link rel="stylesheet" href="/immersive/immersive.css">
+  <script src="/theme.js"></script>
+  <script type="module" src="/immersive/immersive.js"></script>
+</head>
+<body>
+  <a class="skip" href="#classes">Skip to the classes</a>
+
+  <!-- The world: a fixed sky, drifting paper scraps, and a 3D stage the camera moves through. -->
+  <div class="sky" aria-hidden="true"><div class="sun"></div><div class="moon"></div></div>
+  <canvas class="motes" aria-hidden="true"></canvas>
+
+  <div class="stage">
+    <div class="rig">
+      <div class="obj paper paper--slides" data-paper="0"aria-hidden="true">
+        <div class="paper-bar"><span>lecture-slides.pdf</span></div>
+        <div class="slide-title">Elasticity</div>
+        <div class="slide-sub">ECON 351x · Lecture</div>
+        <svg class="slide-chart" viewBox="0 0 100 50"><path d="M8 6 L92 44"/><path d="M8 44 L92 6"/></svg>
+      </div>
+      <div class="obj paper" data-paper="1"aria-hidden="true">
+        <div class="paper-bar"><span>Test 1 · question bank</span></div>
+        <ol class="qlines"><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+      </div>
+      <div class="obj paper paper--gold" data-paper="2"aria-hidden="true">
+        <div class="paper-bar"><span>cheat sheet</span></div>
+        <div class="formula">E = %ΔQ ÷ %ΔP</div>
+        <div class="lines"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="obj paper" data-paper="3"aria-hidden="true">
+        <div class="paper-bar"><span>practice set 2</span></div>
+        <div class="lines"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="tick">✓ 4 / 6</div>
+      </div>
+      <div class="obj paper paper--blush" data-paper="4"aria-hidden="true">
+        <div class="paper-bar"><span>answer key</span></div>
+        <div class="answers"><b>1 B</b><b>2 D</b><b>3 A</b><b>4 C</b><b>5 B</b><b>6 A</b></div>
+      </div>
+      <div class="obj paper" data-paper="5"aria-hidden="true">
+        <div class="paper-bar"><span>my notes</span></div>
+        <div class="scrawl">MR = MC!!</div>
+        <div class="lines"><i></i><i></i><i></i></div>
+      </div>
+
+      <div class="obj tag" data-tag="0" aria-hidden="true">Prof. Hill · 13 topics</div>
+      <div class="obj tag tag--ink" data-tag="1" aria-hidden="true">Prof. Kaplan · 13 topics</div>
+
+      <div class="obj guide"aria-hidden="true">
+        <div class="guide-top"><span>ECON 351x · Hill · Exam 1</span><span class="guide-pill">topic 3 of 13</span></div>
+        <h3>Elasticity</h3>
+        <div class="guide-row open"><b>The gist</b><span>How much people change what they buy when the price moves.</span></div>
+        <div class="guide-row"><b>Key formula</b></div>
+        <div class="guide-row"><b>Where it came from</b></div>
+        <div class="guide-row"><b>Still stuck?</b></div>
+      </div>
+
+      <svg class="obj rings" viewBox="-100 -40 200 80" preserveAspectRatio="none" aria-hidden="true">
+        <g class="ring-lines"></g>
+      </svg>
+      <div class="obj ring-label" data-ring="0" aria-hidden="true">1 day</div>
+      <div class="obj ring-label" data-ring="1" aria-hidden="true">3 days</div>
+      <div class="obj ring-label" data-ring="2" aria-hidden="true">7 days</div>
+      <div class="obj ring-label" data-ring="3" aria-hidden="true">14 days</div>
+      <div class="obj ring-label" data-ring="4" aria-hidden="true">30 days</div>
+
+      <button type="button" class="obj qcard" data-card="0"aria-pressed="false" tabindex="-1"><span class="qcard-in"><span class="face front"><em>Elasticity</em><span class="q">Price rises 10%, quantity falls 20%. Elastic or inelastic?</span></span><span class="face back"><em>Answer</em><span class="q">Elastic: 20% ÷ 10% = 2, and anything above 1 is elastic.</span></span></span></button>
+      <button type="button" class="obj qcard" data-card="1"aria-pressed="false" tabindex="-1"><span class="qcard-in"><span class="face front"><em>Monopoly</em><span class="q">Where does a monopolist set its output?</span></span><span class="face back"><em>Answer</em><span class="q">Where MR = MC, then it reads the price off the demand curve.</span></span></span></button>
+      <button type="button" class="obj qcard" data-card="2"aria-pressed="false" tabindex="-1"><span class="qcard-in"><span class="face front"><em>Supply and demand</em><span class="q">A frost wipes out orange groves. What happens to the price of juice?</span></span><span class="face back"><em>Answer</em><span class="q">Supply shifts left: price goes up, quantity goes down.</span></span></span></button>
+      <button type="button" class="obj qcard" data-card="3"aria-pressed="false" tabindex="-1"><span class="qcard-in"><span class="face front"><em>Elasticity</em><span class="q">Why do insulin makers rarely lose sales when they raise prices?</span></span><span class="face back"><em>Answer</em><span class="q">Few substitutes make demand inelastic, so quantity barely moves.</span></span></span></button>
+      <button type="button" class="obj qcard" data-card="4"aria-pressed="false" tabindex="-1"><span class="qcard-in"><span class="face front"><em>Externalities</em><span class="q">Why does a polluting factory produce too much?</span></span><span class="face back"><em>Answer</em><span class="q">It ignores the cost it puts on others, so its private cost is below the social cost.</span></span></span></button>
+      <button type="button" class="obj qcard" data-card="5"aria-pressed="false" tabindex="-1"><span class="qcard-in"><span class="face front"><em>Game theory</em><span class="q">Two cartel members both cheat. Why?</span></span><span class="face back"><em>Answer</em><span class="q">Cheating is each one's dominant strategy: a prisoner's dilemma.</span></span></span></button>
+
+      <div class="obj chip" data-chip="0"aria-hidden="true">Elasticity</div>
+      <div class="obj chip" data-chip="1"aria-hidden="true">Monopoly</div>
+      <div class="obj chip" data-chip="2"aria-hidden="true">Supply and demand</div>
+      <div class="obj chip" data-chip="3"aria-hidden="true">Elasticity</div>
+      <div class="obj chip" data-chip="4"aria-hidden="true">Externalities</div>
+      <div class="obj chip" data-chip="5"aria-hidden="true">Game theory</div>
+
+      <div class="obj bubble bubble--me" data-bubble="0" aria-hidden="true">Why is MR below the price for a monopolist?</div>
+      <div class="obj bubble" data-bubble="1" aria-hidden="true"><b>Prof. Hill AI</b>To sell one more unit it has to lower the price on every unit it sells, so the extra revenue is less than the price.</div>
+      <div class="obj bubble bubble--typing" data-bubble="2" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <header class="top">
+    <a class="wordmark" href="/"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Study Hub</a>
+    <nav aria-label="Main">
+      <div class="style-slot" data-theme-slot></div>
+      <a href="/prof-ai/">Prof. AI</a>
+      <a class="cta" href="/study/">Start studying</a>
+    </nav>
+  </header>
+
+  <!-- Each section is a stretch of scroll; its copy is pinned and faded in by immersive.js. -->
+  <main>
+    <section class="scene" id="start" data-status="Papers everywhere" aria-labelledby="h-start">
+      <div class="copy copy--left">
+        <h1 id="h-start">All your class stuff, <em>folded</em> into one guide.</h1>
+        <p>Slides, question banks, cheat sheets and past exams for your ECON 351x section, turned into topic notes and practice in one place.</p>
+        <div class="actions">
+          <a class="btn" href="#classes" data-jump>Find my class</a>
+          <a class="btn btn--ghost" href="#professors">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="professors" data-status="Sorted by professor" aria-labelledby="h-professors">
+      <div class="copy copy--right">
+        <h2 id="h-professors">Built around your professor.</h2>
+        <p>ECON 351x is taught by Prof. Matthew Hill and Prof. Erin Kaplan. Each section gets its own three exams, 13 topics and the briefs behind them, so what you study matches what they emphasize.</p>
+      </div>
+    </section>
+
+    <section class="scene" id="guide" data-status="Folding into one guide" aria-labelledby="h-guide">
+      <div class="copy copy--left">
+        <h2 id="h-guide">Everything folds into <em>one guide.</em></h2>
+        <p>Click a topic, or upload up to four PDF, PPTX, TXT or MD files. Study Hub reads them and builds topic notes and practice questions, each pointing back to the file it came from.</p>
+      </div>
+    </section>
+
+    <section class="scene" id="mixed" data-status="Topics shuffled together" aria-labelledby="h-mixed">
+      <div class="copy copy--right">
+        <h2 id="h-mixed">Practice mixed, not in blocks.</h2>
+        <p>Questions from different topics are shuffled together, so you practice telling elasticity from monopoly the way the exam will ask. Each exam’s “Mixed practice” builds one session from several topics.</p>
+        <p class="hint">Flip a card to check the answer.</p>
+      </div>
+    </section>
+
+    <section class="scene" id="review" data-status="Reviews coming back" aria-labelledby="h-review">
+      <div class="copy copy--left">
+        <h2 id="h-review">Then it <em>comes back.</em></h2>
+        <p>Every question you answer returns after 1, 3, 7, 14 and 30 days while you keep getting it right, and after 10 minutes when you miss it. The Review tab mixes everything that’s due.</p>
+      </div>
+    </section>
+
+    <section class="scene" id="prof-ai" data-status="Prof. AI is answering" aria-labelledby="h-prof-ai">
+      <div class="copy copy--right">
+        <h2 id="h-prof-ai">Stuck? Ask Prof. AI.</h2>
+        <p>A tutor built from your professor’s slides and practice sets. Ask it to explain a topic or quiz you, in their framing.</p>
+        <div class="actions"><a class="btn btn--ghost" href="/prof-ai/">Open Prof. AI</a></div>
+      </div>
+    </section>
+
+    <section class="scene scene--last" id="classes" data-status="Ready when you are" aria-labelledby="h-classes">
+      <div class="copy copy--center">
+        <h2 id="h-classes">Pick your class.</h2>
+        <div class="classes">
+          <a class="class-card" href="/courses/econ351-hill.html">
+            <span class="avatar" aria-hidden="true">MH</span>
+            <span class="class-name">Prof. Matthew Hill</span>
+            <span class="class-meta">ECON 351x · 13 topics · 3 exams</span>
+            <span class="class-go">Open class →</span>
+          </a>
+          <a class="class-card" href="/courses/econ351-kaplan.html">
+            <span class="avatar avatar--ink" aria-hidden="true">EK</span>
+            <span class="class-name">Prof. Erin Kaplan</span>
+            <span class="class-meta">ECON 351x · 13 topics · 3 exams</span>
+            <span class="class-go">Open class →</span>
+          </a>
+        </div>
+        <p class="fineprint">A student project for BUAD 112. Not affiliated with or endorsed by USC.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="hud">
+    <nav class="dots" aria-label="Sections"></nav>
+    <div class="status" aria-hidden="true"><span></span></div>
+    <div class="dial" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17"/><path class="dial-arc" d="M20 3 A17 17 0 0 1 20 3"/></svg><span>day 0</span></div>
+  </div>
+</body>
+</html>

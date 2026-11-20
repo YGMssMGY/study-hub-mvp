@@ -28,6 +28,12 @@
   text-decoration: none;
 }
 
+/* Phones: with three styles the switch no longer fits beside the study tool's links, so it takes
+   its own row instead of pushing the "Study Hub" link off the left edge. */
+@media (max-width: 560px) {
+  .page-tools { flex-wrap: wrap; row-gap: 4px; }
+}
+
 /* Study Hub style: the switch sits on the cardinal header */
 
 html[data-theme="hub"] .theme-switch {
@@ -92,4 +98,135 @@ html[data-theme="classic"] .page-tools .home-link {
   color: #252522;
   font-size: 13px;
   font-weight: 500;
+}
+
+/* Immersive style: the switch is a HUD pill on the dark ink header. The immersive page itself
+   (html.immersive-home) always wears this look, whatever style is saved. These rules come last so
+   they win over the two blocks above on that page. */
+
+:is(html[data-theme="immersive"], html.immersive-home) .theme-switch {
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 247, 236, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 247, 236, 0.14);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+:is(html[data-theme="immersive"], html.immersive-home) .theme-switch-label {
+  color: rgba(255, 247, 236, 0.72);
+  font-weight: 600;
+}
+
+:is(html[data-theme="immersive"], html.immersive-home) .theme-switch button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff7ec;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+:is(html[data-theme="immersive"], html.immersive-home) .theme-switch button:hover {
+  background: rgba(255, 247, 236, 0.12);
+}
+
+:is(html[data-theme="immersive"], html.immersive-home) .theme-switch button[aria-pressed="true"] {
+  background: #ffcc00;
+  color: #1c1917;
+}
+
+/* Two-tone ring: gold outline with an ink halo, readable on the ink bar and on the sky. */
+:is(html[data-theme="immersive"], html.immersive-home) .theme-switch button:focus-visible {
+  outline: 3px solid #ffcc00;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #1c1917;
+}
+
+html[data-theme="immersive"] .page-tools .home-link {
+  color: #fff7ec;
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- The immersive world layer, shared by every page in the Immersive style ----------
+   The night sky (cardinal to ember, a low sun's glow) is the page canvas, and two layers of motes
+   drift up past it at different speeds, like the scraps on /immersive/. The motes sit at irregular
+   points in a tall tile so they never read as a grid, and they move by transform only, so the
+   drift stays on the compositor. The immersive page draws its own sky, so it is left out. */
+
+html[data-theme="immersive"]:not(.immersive-home) {
+  background:
+    radial-gradient(circle at 86% 8%, rgba(255, 204, 0, 0.26), transparent 36vmax),
+    radial-gradient(ellipse at 8% 110%, rgba(255, 140, 60, 0.2), transparent 55%),
+    linear-gradient(to bottom, #3d0505, #b3301c) #3d0505;
+  background-attachment: fixed; /* every layer, so the glow never tiles down a long page */
+  background-repeat: no-repeat;
+}
+
+html[data-theme="immersive"]:not(.immersive-home) body::before,
+html[data-theme="immersive"]:not(.immersive-home) body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+html[data-theme="immersive"]:not(.immersive-home) body::before {
+  height: calc(100vh + 1200px);
+  background-image:
+            radial-gradient(circle at 84% 57%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 33% 29%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 97% 31%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 46% 24%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 58% 40%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 72% 65%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 83% 72%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 92% 75%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 35% 89%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 48% 11%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 6% 44%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 23% 50%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px),
+      radial-gradient(circle at 28% 18%, rgba(255, 204, 0, 0.45) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 44% 92%, rgba(255, 247, 236, 0.3) 0 1.4px, transparent 2.2px);
+  background-size: 100% 1200px;
+  animation: imm-drift-far 140s linear infinite;
+}
+
+html[data-theme="immersive"]:not(.immersive-home) body::after {
+  height: calc(100vh + 1700px);
+  background-image:
+            radial-gradient(circle at 23% 61%, rgba(255, 204, 0, 0.55) 0 2px, transparent 3px),
+      radial-gradient(ellipse 3px 4.5px at 77% 31%, rgba(255, 247, 236, 0.3) 0 99%, transparent),
+      radial-gradient(circle at 57% 89%, rgba(255, 247, 236, 0.36) 0 1.8px, transparent 2.8px),
+      radial-gradient(circle at 37% 95%, rgba(255, 204, 0, 0.55) 0 2px, transparent 3px),
+      radial-gradient(ellipse 3px 4.5px at 96% 19%, rgba(255, 247, 236, 0.3) 0 99%, transparent),
+      radial-gradient(circle at 22% 90%, rgba(255, 247, 236, 0.36) 0 1.8px, transparent 2.8px),
+      radial-gradient(circle at 18% 18%, rgba(255, 204, 0, 0.55) 0 2px, transparent 3px),
+      radial-gradient(ellipse 3px 4.5px at 9% 55%, rgba(255, 247, 236, 0.3) 0 99%, transparent),
+      radial-gradient(circle at 26% 47%, rgba(255, 247, 236, 0.36) 0 1.8px, transparent 2.8px);
+  background-size: 100% 1700px;
+  animation: imm-drift-near 90s linear infinite;
+}
+
+@keyframes imm-drift-far { to { transform: translateY(-1200px); } }
+@keyframes imm-drift-near { to { transform: translateY(-1700px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="immersive"] body::before,
+  html[data-theme="immersive"] body::after { animation: none; }
+}
+
+@media print {
+  html[data-theme="immersive"]:not(.immersive-home) { background: #ffffff; }
+  html[data-theme="immersive"] body::before,
+  html[data-theme="immersive"] body::after { display: none; }
 }

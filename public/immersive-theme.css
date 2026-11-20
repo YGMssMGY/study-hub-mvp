@@ -1,0 +1,618 @@
+/* "Immersive" style for the site pages (landing and course pages): the night-sky world of /immersive/.
+   The fixed cardinal-to-ember sky with drifting motes (in /theme.css) sits behind everything; content lives on warm
+   paper cards with soft, blurred shadows; the header and small labels are dark ink HUD pills with gold.
+   Everything is scoped to html[data-theme="immersive"], so the USC and Lockin looks never see it. */
+
+html[data-theme="immersive"] {
+  --cardinal: #990000;
+  --cardinal-dark: #7a0000;
+  --ember: #b3301c;
+  --night: #3d0505;
+  --gold: #ffcc00;
+  --gold-hi: #ffe066;
+  --gold-soft: #fff4cc;
+  --gold-ink: #5c4300;
+  --blush: #f3d9d9;
+  --paper: #fffdf8;
+  --paper-2: #f6f0e6;
+  --ink: #1c1917;
+  --gray: #57534e;
+  --light: #fffdf8;
+  --line: #e7e1d8;
+  --white: #fffdf8;
+  --sky-text: #fff7ec;
+  --sky-soft: rgba(255, 247, 236, 0.86);
+  --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 22px;
+  --border: 0;
+  --pop: none;
+  --pop-deep: none;
+  /* Paper resting on the sky: a tight contact shadow plus a long, soft drop. */
+  --lift: 0 2px 4px rgba(28, 25, 23, 0.14), 0 26px 44px -22px rgba(30, 0, 0, 0.7);
+  --lift-hi: 0 2px 4px rgba(28, 25, 23, 0.14), 0 36px 54px -22px rgba(30, 0, 0, 0.8);
+
+  color-scheme: dark;
+  scroll-padding-top: 104px; /* anchors and keyboard focus land below the sticky header */
+  scrollbar-color: var(--gold) var(--ink);
+  accent-color: var(--cardinal);
+
+  /* The sky and drifting motes behind the page come from /theme.css (shared by every page). */
+  body {
+    background: transparent;
+    color: var(--sky-text);
+    font-size: 1.0625rem;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+  input, textarea { caret-color: var(--cardinal); }
+  /* :where() keeps this at element weight, so component link colours (ink cards, pills) still win. */
+  :where(a) { text-underline-offset: 3px; }
+
+  h1, h2, h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.06;
+  }
+
+  h1 { font-size: clamp(2.6rem, 5.6vw, 4.6rem); }
+  h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+  h3 { font-size: 1.35rem; letter-spacing: -0.01em; }
+
+  /* Two-tone ring: gold outline with an ink halo, visible on the sky, on paper and on the ink bars. */
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--ink);
+    transition: none; /* the ring appears at once instead of easing out of a card's shadow */
+  }
+
+  /* Gold italic emphasis replaces the hand-drawn underline. */
+  .scribble {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .scribble svg { display: none; }
+  .scribble--plain { color: inherit; font-style: normal; }
+
+  /* ---------- Header: a floating ink pill, like the immersive page's top bar ---------- */
+
+  .site-header {
+    position: sticky;
+    top: 16px;
+    z-index: 30;
+    max-width: calc(var(--max) - 16px);
+    margin: 16px auto 0;
+    border-top: 0;
+    border-radius: 18px;
+    background: var(--ink);
+    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+  }
+
+  .site-header .container {
+    gap: 8px 20px;
+    padding: 8px 8px 8px 18px;
+  }
+
+  .wordmark {
+    color: var(--sky-text);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .site-nav { gap: 4px; }
+
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+    color: var(--sky-text);
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+
+  .site-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+  }
+
+  .site-nav .nav-cta {
+    padding: 0 16px;
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+    box-shadow: none;
+  }
+
+  .site-nav .nav-cta:hover { background: var(--gold-hi); }
+
+  /* ---------- Buttons and small labels ---------- */
+
+  .button {
+    min-height: 52px;
+    padding: 0 24px;
+    border-radius: 16px;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 1rem;
+    box-shadow: 0 14px 26px -16px rgba(20, 0, 0, 0.8);
+    transition: transform 0.4s var(--ease), background-color 0.2s ease, box-shadow 0.4s var(--ease);
+  }
+
+  .button:hover {
+    transform: translateY(-3px);
+    background: var(--gold-hi);
+    box-shadow: 0 20px 30px -16px rgba(20, 0, 0, 0.85);
+  }
+
+  .button--ghost {
+    border: 0;
+    background: transparent;
+    color: var(--sky-text);
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+
+  .button--ghost:hover {
+    background: rgba(255, 247, 236, 0.12);
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+
+  .button--outline {
+    border: 0;
+    background: var(--ink);
+    color: var(--sky-text);
+  }
+
+  .button--outline:hover { background: #2a2421; }
+
+  .button--small {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 0.95rem;
+  }
+
+  .tag {
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: var(--gold-ink);
+  }
+
+  .sticker,
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--gold);
+    font-size: 0.875rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.6);
+    animation: none;
+  }
+
+  .badge-dot { background: var(--gold); }
+
+  .lead { color: var(--gray); }
+
+  /* ---------- Landing page ---------- */
+
+  .hero {
+    overflow: visible;
+    padding: 72px 0 120px;
+    background: transparent;
+    color: var(--sky-text);
+  }
+
+  .hero .lead,
+  .sticker-row { color: var(--sky-soft); }
+
+  .hero-art { padding: 48px 8px; }
+
+  .file-chip {
+    border-radius: 12px;
+    background: var(--paper);
+    box-shadow: 0 2px 4px rgba(28, 25, 23, 0.14), 0 18px 30px -14px rgba(28, 12, 8, 0.6);
+    animation-duration: 7s;
+  }
+
+  .file-chip--3 { background: var(--gold); }
+
+  .guide-preview {
+    border-radius: 24px;
+    background: var(--paper);
+    box-shadow: 0 2px 6px rgba(28, 25, 23, 0.14), 0 40px 64px -24px rgba(60, 20, 10, 0.6);
+    transform: rotate(1deg);
+  }
+
+  .guide-preview-head h2 { font-size: 2rem; }
+  .guide-preview summary { font-weight: 600; }
+  .formula { border-radius: 8px; }
+
+  .stat-strip ul {
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--ink);
+    box-shadow: var(--lift);
+  }
+
+  .stat-strip li { color: rgba(255, 247, 236, 0.8); }
+  .stat-strip strong { color: var(--gold); font-weight: 400; }
+
+  .section { padding: 96px 0; }
+
+  .section--white {
+    background: transparent;
+    border: 0;
+  }
+
+  .section-head h2,
+  .tool-copy h2,
+  .cta-band h2 {
+    font-weight: 400;
+    letter-spacing: -0.025em;
+  }
+
+  .section-head .lead,
+  .section-head .meta { color: var(--sky-soft); }
+
+  .card {
+    gap: 18px;
+    border: 0;
+    border-radius: 22px;
+    background: var(--paper);
+    box-shadow: var(--lift);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--lift-hi);
+  }
+
+  .card h3 { font-weight: 400; font-size: 1.9rem; }
+  .card-foot { border-top: 1px solid var(--line); }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 1.2rem;
+  }
+
+  .avatar--ink { color: var(--gold); }
+
+  .steps li {
+    border-top: 1px solid rgba(255, 247, 236, 0.3);
+  }
+
+  .steps li::before {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .steps h3 { color: var(--sky-text); }
+  .steps p { color: var(--sky-soft); }
+
+  .tool-panel {
+    border: 0;
+    border-radius: 28px;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: var(--lift);
+  }
+
+  .tool-list li {
+    border-radius: 16px;
+    background: var(--paper-2);
+  }
+
+  .tool-list li:nth-child(2) { background: var(--gold-soft); }
+
+  .cta-band {
+    border-radius: 28px;
+    background: var(--ink);
+    box-shadow: var(--lift);
+  }
+
+  .cta-band p { color: rgba(255, 247, 236, 0.8); }
+
+  .site-footer {
+    border-top: 1px solid rgba(255, 247, 236, 0.18);
+    color: var(--sky-soft);
+  }
+
+  .site-footer a { color: var(--sky-text); }
+
+  /* ---------- Course pages ---------- */
+
+  .page-hero {
+    padding: 28px 0 56px;
+    background: transparent;
+    color: var(--sky-text);
+  }
+
+  /* Title first, then the course labels under it, so no label sits above the heading. */
+  .page-hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-hero h1 {
+    order: 1;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+  }
+
+  .page-hero-tags { order: 2; margin: 20px 0 0; }
+  .page-hero .lead { order: 3; margin-top: 20px; color: var(--sky-soft); }
+  .exam-tabs { order: 4; }
+
+  .page-hero-tags .tag {
+    padding: 7px 14px;
+    background: rgba(255, 247, 236, 0.12);
+    color: var(--sky-text);
+    font-size: 0.875rem;
+  }
+
+  .page-hero .lead a { color: var(--gold); }
+
+  .back-link {
+    margin-bottom: 18px;
+    color: var(--sky-soft);
+    border-radius: 12px;
+  }
+
+  .back-link:hover { color: var(--sky-text); }
+
+  .exam-tab {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--sky-text);
+    font-weight: 700;
+    box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.4s var(--ease);
+  }
+
+  .exam-tab:hover {
+    border: 0;
+    background: var(--gold);
+    color: var(--ink);
+    box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+  }
+
+  .course-body { padding: 24px 0 96px; }
+
+  .course-aside { top: 104px; }
+
+  .study-card {
+    border-radius: 22px;
+    background: var(--ink);
+    color: var(--sky-text);
+    box-shadow: var(--lift);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .study-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--lift-hi);
+  }
+
+  .study-card-title {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .study-card-text { color: rgba(255, 247, 236, 0.8); }
+  .study-card-text strong { color: var(--gold); }
+
+  .study-card-cta {
+    border-radius: 14px;
+    font-weight: 700;
+  }
+
+  .exam-group { scroll-margin-top: 0; }
+
+  .exam-group-head h2 {
+    color: var(--sky-text);
+    font-size: 2.25rem;
+  }
+
+  .exam-group-head .meta { color: var(--sky-soft); }
+
+  /* "Mixed practice" is a HUD pill: gold text on ink reads on every part of the sky. */
+  .exam-group-head .mix-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--gold);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .exam-group-head .mix-link:hover { background: #2a2421; }
+
+  .exam-note { color: var(--sky-soft); }
+
+  .topic-cards { gap: 12px; }
+
+  .topic-card {
+    border: 0;
+    border-radius: 20px;
+    background: var(--paper);
+    box-shadow: 0 1px 3px rgba(28, 25, 23, 0.14), 0 16px 30px -22px rgba(30, 0, 0, 0.7);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+
+  .topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--lift-hi);
+  }
+
+  .topic-num {
+    border-radius: 14px;
+    background: var(--cardinal);
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .topic-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .topic-badge {
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: var(--gold-ink);
+    font-weight: 700;
+  }
+
+  .topic-card:hover .topic-badge { background: var(--gold); color: var(--ink); }
+
+  .topic-card--empty {
+    border: 0;
+    background: rgba(255, 253, 248, 0.82);
+    box-shadow: none;
+  }
+
+  .topic-card--empty .topic-num,
+  .topic-card--empty .topic-badge {
+    background: var(--paper-2);
+    color: var(--gray);
+  }
+
+  .source-panel,
+  .hint-panel {
+    border: 0;
+    border-radius: 22px;
+    box-shadow: var(--lift);
+  }
+
+  .source-panel {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .source-panel h2,
+  .hint-panel h2 {
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+
+  .source-panel li a {
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+  }
+
+  .source-panel li a:focus-visible { border-radius: 8px; }
+
+  .source-chip {
+    border-radius: 999px;
+    background: var(--paper-2);
+  }
+
+  .hint-panel {
+    background: var(--gold);
+    color: var(--ink);
+    transform: none;
+  }
+
+  /* ---------- Arrival: the page's opening lines rise out of the sky, once ---------- */
+
+  .hero-copy > *,
+  .hero-art,
+  .page-hero .container > *,
+  .course-main > :first-child,
+  .course-aside {
+    animation: imm-rise 0.9s var(--ease) both;
+  }
+
+  .hero-copy > :nth-child(2),
+  .page-hero h1 { animation-delay: 0.08s; }
+  .hero-copy > :nth-child(3),
+  .page-hero-tags,
+  .page-hero .lead { animation-delay: 0.16s; }
+  .hero-copy > :nth-child(n + 4),
+  .exam-tabs,
+  .hero-art { animation-delay: 0.24s; }
+  .course-main > :first-child,
+  .course-aside { animation-delay: 0.3s; }
+
+  @media (max-width: 900px) {
+    scroll-padding-top: 24px;
+    .site-header { position: relative; top: 0; }
+    .course-aside { top: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .site-header {
+      margin: 12px 12px 0;
+      border-radius: 16px;
+    }
+
+    .site-header .container {
+      position: relative;
+      gap: 4px;
+      padding: 8px 8px 8px 14px;
+    }
+
+    /* Row one: wordmark with the call to action pinned beside it; then the links; then the switch. */
+    .site-nav {
+      width: 100%;
+      gap: 2px;
+      margin-left: -10px;
+    }
+
+    .site-nav a { min-height: 40px; padding: 0 10px; }
+
+    .site-nav .nav-cta {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      min-height: 40px;
+    }
+
+    .site-nav .theme-switch { flex: 1 0 100%; margin-left: 10px; }
+    .site-nav .theme-switch button { flex: 1; }
+    .hero { padding: 40px 0 88px; }
+    .guide-preview { transform: none; }
+    .exam-group-head h2 { font-size: 1.9rem; }
+    .topic-title { font-size: 1.1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card:hover,
+    .topic-card:hover,
+    .study-card:hover,
+    .exam-tab:hover,
+    .button:hover { transform: none; }
+  }
+}
+
+/* Starts already legible (never fully transparent), so a paused or skipped animation still shows the page. */
+@keyframes imm-rise {
+  from { opacity: 0.25; transform: translateY(20px); filter: blur(5px); }
+}

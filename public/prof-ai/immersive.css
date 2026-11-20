@@ -1,0 +1,281 @@
+/* "Immersive" style for Prof. AI (also used inside the side panel). Same world as /immersive/:
+   the chat floats on the night sky, the professor answers on warm paper, you ask in cardinal, and
+   the controls are ink HUD pills with gold. Scoped to html[data-theme="immersive"]. */
+
+html[data-theme="immersive"] {
+  --cardinal: #990000;
+  --cardinal-dk: #7a0000;
+  --cardinal-deep: #2a2421;
+  --gold: #ffcc00;
+  --gold-hi: #ffe066;
+  --gold-tint: #fff4cc;
+  --ink: #1c1917;
+  --ink-2: #44403c;
+  --muted: #57534e;
+  --ivory: #f6f0e6;
+  --ivory-2: #efe6d8;
+  --card: #fffdf8;
+  --line: #e7e1d8;
+  --blush: #f8e4e1;
+  --sky-text: #fff7ec;
+  --sky-soft: rgba(255, 247, 236, 0.86);
+  --display: "Libre Caslon Text", Georgia, serif;
+  --font: "Inter", system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --lift: 0 2px 4px rgba(28, 25, 23, 0.14), 0 18px 34px -18px rgba(20, 0, 0, 0.7);
+
+  scrollbar-color: var(--gold) var(--ink);
+
+  /* The sky and drifting motes behind the chat come from /theme.css (shared by every page). */
+  body {
+    background: transparent;
+    color: var(--ink);
+    font-size: 15px;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+  textarea { caret-color: var(--cardinal); }
+
+  :focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--ink);
+  }
+
+  textarea:focus-visible { outline: 0; box-shadow: none; }
+
+  /* ---------- Header: floating ink pill ---------- */
+
+  .top {
+    margin: 12px 12px 0;
+    padding: 8px 8px 8px 16px;
+    border-radius: 18px;
+    background: var(--ink);
+    color: var(--sky-text);
+    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+  }
+
+  .lockup { color: var(--sky-text); border-radius: 10px; }
+  .lockup .word { font-weight: 400; font-size: 20px; letter-spacing: -0.01em; }
+
+  .tabs {
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(255, 247, 236, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 247, 236, 0.14);
+  }
+
+  .tabs button {
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    color: var(--sky-text);
+    font-size: 13px;
+  }
+
+  .tabs button:hover { background: rgba(255, 247, 236, 0.12); }
+  .tabs button.on { background: var(--gold); color: var(--ink); }
+
+  .pick-btn {
+    min-height: 40px;
+    padding: 4px 12px 4px 4px;
+    border-radius: 999px;
+    background: rgba(255, 247, 236, 0.1);
+    color: var(--sky-text);
+    box-shadow: inset 0 0 0 1px rgba(255, 247, 236, 0.14);
+  }
+
+  .pick-btn:hover { background: rgba(255, 247, 236, 0.16); }
+  .pick-btn .av { border-radius: 999px; }
+  .pick-btn .chev { color: var(--gold); }
+
+  .menu {
+    border: 0;
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: 0 2px 4px rgba(28, 25, 23, 0.14), 0 24px 44px -16px rgba(20, 0, 0, 0.65);
+  }
+
+  .menu .mh { letter-spacing: 0; text-transform: none; font-size: 13px; }
+  .opt-p { min-height: 44px; }
+  .opt-p:hover { background: var(--ivory); }
+  .opt-p.on { background: var(--gold-tint); }
+
+  .av { font-weight: 400; }
+  .opt-p.on .av, .pick-btn .av, .bot .av { background: var(--cardinal); color: var(--gold); }
+
+  /* ---------- Chat ---------- */
+
+  .feed { padding: 28px 20px; }
+
+  .user .bubble {
+    border-radius: 18px 18px 6px 18px;
+    background: var(--cardinal);
+    color: var(--card);
+    box-shadow: 0 14px 26px -18px rgba(20, 0, 0, 0.8);
+  }
+
+  .bot .bubble {
+    border: 0;
+    border-radius: 6px 18px 18px 18px;
+    background: var(--card);
+    box-shadow: var(--lift);
+  }
+
+  .bot .av { box-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.6); }
+  .bubble h4 { font-family: var(--display); font-weight: 400; font-size: 17px; }
+  .bubble ol li::before { border-radius: 999px; background: var(--ink); color: var(--gold); }
+  .answer { border-color: #ecd98a; }
+  .answer .lbl { letter-spacing: 0; text-transform: none; font-size: 13px; }
+
+  /* Suggestions are HUD pills on the sky. */
+  .chip,
+  .act {
+    min-height: 36px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--sky-text);
+    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .chip:hover,
+  .act:hover { background: #2e2724; }
+
+  .chip.hot {
+    border: 0;
+    background: var(--gold);
+    color: var(--ink);
+    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.6);
+  }
+
+  .chip.hot:hover { background: var(--gold-hi); }
+
+  .loading { color: var(--sky-soft); }
+  .dots i { background: var(--gold); }
+
+  .err {
+    border: 0;
+    border-radius: 14px;
+    background: var(--card);
+    color: #7a0000;
+    box-shadow: var(--lift);
+  }
+
+  .err button { min-height: 32px; border-radius: 999px; }
+  .notice { color: var(--sky-soft); }
+
+  /* ---------- Composer ---------- */
+
+  .composer {
+    padding: 10px 20px 14px;
+    background: transparent;
+  }
+
+  .file {
+    border: 0;
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .box {
+    border: 0;
+    border-radius: 20px;
+    padding: 6px;
+    background: var(--card);
+    box-shadow: 0 2px 4px rgba(28, 25, 23, 0.16), 0 22px 40px -18px rgba(20, 0, 0, 0.8);
+  }
+
+  .box:focus-within {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--ink), 0 22px 40px -18px rgba(20, 0, 0, 0.8);
+  }
+
+  .box.hover { background: var(--gold-tint); }
+  .clip { width: 40px; height: 40px; border-radius: 999px; }
+  .clip:hover { background: var(--ivory); }
+
+  .send {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: var(--gold);
+  }
+
+  .send:hover:not(:disabled) { background: var(--gold-hi); }
+  .send:disabled { opacity: 0.45; }
+
+  .under { color: var(--sky-soft); }
+  .toggle { min-height: 32px; color: var(--sky-text); border-radius: 999px; }
+  .sw { background: rgba(255, 247, 236, 0.3); }
+  .toggle.on .sw { background: var(--gold); }
+  .toggle.on .sw::after { background: var(--ink); }
+
+  /* ---------- Quiz ---------- */
+
+  .quiz {
+    border: 0;
+    border-radius: 20px;
+    background: var(--card);
+    box-shadow: var(--lift);
+  }
+
+  .quiz.main-card { border: 0; box-shadow: var(--lift); }
+  .qhead h3 { font-family: var(--display); font-size: 22px; font-weight: 400; letter-spacing: -0.015em; }
+  .score { border-radius: 999px; color: var(--gold); }
+  .qtext { font-weight: 600; }
+
+  .opt {
+    min-height: 44px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+  }
+
+  .opt:hover { border-color: #b9ab95; }
+  .opt.sel { border-color: var(--ink); background: var(--gold-tint); }
+
+  .btn {
+    min-height: 40px;
+    border: 1.5px solid #d9cfbf;
+    border-radius: 12px;
+    background: var(--card);
+  }
+
+  .btn:hover:not(:disabled) { border-color: var(--ink); }
+
+  .btn.pri {
+    border-color: var(--gold);
+    background: var(--gold);
+    box-shadow: none;
+  }
+
+  .btn.pri:hover:not(:disabled) { border-color: var(--gold-hi); background: var(--gold-hi); }
+  .verdict { border-width: 1.5px; }
+  .verdict.no { border-color: #d79a92; }
+  select { min-height: 40px; border: 1.5px solid #d9cfbf; border-radius: 12px; }
+  .empty { color: var(--ink-2); }
+  .empty b { font-family: var(--display); font-weight: 400; font-size: 20px; }
+  .access input { min-height: 40px; border: 1.5px solid #d9cfbf; border-radius: 10px; }
+
+  /* Inside the side panel the panel supplies the frame, so the header runs edge to edge. */
+  &.framed .top {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  @media (max-width: 640px) {
+    .top { margin: 8px 8px 0; padding: 6px 6px 6px 10px; }
+    .header-switch .theme-switch { display: flex; }
+    .header-switch .theme-switch button { flex: 1; }
+    /* The base phone rule hides every span in this row, which also hid the Step-by-step switch itself. */
+    .under .toggle .sw { display: block; }
+    .feed { padding: 18px 12px; }
+    .composer { padding: 8px 12px 12px; }
+  }
+}
+

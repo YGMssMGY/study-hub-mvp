@@ -163,3 +163,84 @@ html[data-theme="classic"] .prof-ai-close {
   background: #ffffff;
   color: #252522;
 }
+
+/* "Immersive" style: an ink HUD pill that opens a paper panel with a soft, blurred shadow. */
+
+html[data-theme="immersive"] .prof-ai-toggle {
+  border: 0;
+  background: #1c1917;
+  color: #fff7ec;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 16px 30px -12px rgba(20, 0, 0, 0.75);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="immersive"] .prof-ai-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 22px 36px -12px rgba(20, 0, 0, 0.8);
+}
+
+html[data-theme="immersive"] .prof-ai-toggle-dot {
+  background: #ffcc00;
+  color: #1c1917;
+  font-weight: 800;
+}
+
+html[data-theme="immersive"] .prof-ai-panel {
+  border-left: 0;
+  background: #3d0505;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.18), -30px 0 60px -20px rgba(10, 0, 0, 0.7);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.45s;
+}
+
+html[data-theme="immersive"] .prof-ai-panel.open {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="immersive"] .prof-ai-panel-head {
+  background: #1c1917;
+  color: #fff7ec;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+html[data-theme="immersive"] .prof-ai-panel-title {
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+html[data-theme="immersive"] .prof-ai-panel-head a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 8px;
+  border-radius: 10px;
+  color: #ffcc00;
+  text-underline-offset: 3px;
+}
+
+html[data-theme="immersive"] .prof-ai-close {
+  border-radius: 999px;
+  background: rgba(255, 247, 236, 0.1);
+  color: #fff7ec;
+}
+
+html[data-theme="immersive"] .prof-ai-close:hover {
+  background: rgba(255, 247, 236, 0.18);
+}
+
+html[data-theme="immersive"] .prof-ai-toggle:focus-visible,
+html[data-theme="immersive"] .prof-ai-close:focus-visible,
+html[data-theme="immersive"] .prof-ai-panel-head a:focus-visible {
+  outline: 3px solid #ffcc00;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #1c1917;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="immersive"] .prof-ai-toggle { transition: none; }
+  html[data-theme="immersive"] .prof-ai-toggle:hover { transform: none; }
+  html[data-theme="immersive"] .prof-ai-panel,
+  html[data-theme="immersive"] .prof-ai-panel.open { transition: none; }
+}

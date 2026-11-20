@@ -1,0 +1,623 @@
+/* "Immersive" style for the study tool. Overrides styles.css (the tool's own look) only while
+   html[data-theme="immersive"] is set by /theme.js. This is a work surface, so the night sky and its
+   drifting motes stay in the frame around the desk; the panels themselves are calm, dense paper with
+   strong contrast and no decorative motion. */
+
+html[data-theme="immersive"] {
+  --paper: #f6f0e6;
+  --white: #fffdf8;
+  --ink: #1c1917;
+  --muted: #57534e;
+  --line: #e7e1d8;
+  --red: #990000;
+  --green: #e6f0e3;
+  --green-ink: #2d5a27;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Libre Caslon Text", Georgia, serif;
+  --gold: #ffcc00;
+  --gold-hi: #ffe066;
+  --gold-soft: #fff4cc;
+  --blush: #f8e4e1;
+  --night: #3d0505;
+  --ember: #b3301c;
+  --sky-text: #fff7ec;
+  --sky-soft: rgba(255, 247, 236, 0.86);
+  --lift: 0 2px 4px rgba(28, 25, 23, 0.14), 0 30px 60px -30px rgba(20, 0, 0, 0.85);
+
+  color-scheme: light;
+  scrollbar-color: var(--gold) var(--ink);
+  accent-color: var(--red);
+
+  /* The sky and drifting motes behind the desk come from /theme.css (shared by every page). */
+  body {
+    background: transparent;
+    color: var(--ink);
+    font-size: 15px;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+  input, textarea { caret-color: var(--red); }
+
+  /* Two-tone ring: gold outline with an ink halo, readable on paper and on the sky alike. */
+  button:focus-visible,
+  a:focus-visible,
+  summary:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--ink);
+  }
+
+  input:focus:not(:focus-visible),
+  textarea:focus:not(:focus-visible) { outline: 0; }
+
+  /* ---------- Top bar: a floating ink pill ---------- */
+
+  .page-tools {
+    width: calc(100% - 32px);
+    max-width: 1568px;
+    min-height: 60px;
+    margin: 12px auto 0;
+    padding: 8px 8px 8px 18px;
+    gap: 12px;
+    border-radius: 18px;
+    background: var(--ink);
+    color: var(--sky-text);
+    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+  }
+
+  .connection-label {
+    color: rgba(255, 247, 236, 0.72);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .page-tools .text-button {
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 12px;
+    color: var(--sky-text);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .page-tools .text-button:hover { background: rgba(255, 255, 255, 0.1); color: var(--sky-text); }
+
+  /* ---------- Buttons ---------- */
+
+  .button {
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1.5px solid #d9cfbf;
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .button.primary {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  .button.primary:hover { border-color: var(--gold-hi); background: var(--gold-hi); }
+  .button.secondary:hover { border-color: var(--ink); background: var(--white); }
+  .button:disabled { opacity: 0.55; }
+
+  .small { font-size: 13px; }
+  .text-button { font-size: 14px; font-weight: 600; }
+  .text-button:hover { color: var(--red); }
+  .danger { color: var(--red); }
+
+  .icon-button {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 10px;
+  }
+
+  .icon-button:hover { background: var(--paper); }
+
+  /* ---------- Upload view ---------- */
+
+  .landing { max-width: 600px; }
+
+  .upload-panel {
+    padding: 32px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--white);
+    box-shadow: var(--lift);
+  }
+
+  .upload-panel h1 {
+    margin-bottom: 22px;
+    text-align: left;
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .drop-zone {
+    border: 2px dashed #d3c7b4;
+    border-radius: 18px;
+    background: var(--paper);
+  }
+
+  .drop-zone:hover { border-color: #b9a98f; }
+
+  .drop-zone.dragging {
+    background: var(--gold-soft);
+    border-color: var(--ink);
+  }
+
+  .drop-zone:has(.file-input:focus-visible) {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--ink);
+  }
+
+  .file-input:focus-visible { box-shadow: none; outline: 0; }
+
+  .drop-icon { color: var(--red); }
+  .drop-title { font-size: 15px; font-weight: 700; }
+  .drop-title u { color: var(--red); }
+  .drop-help { color: var(--muted); font-size: 13px; }
+
+  .file-row {
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+
+  .file-ext {
+    border-radius: 6px;
+    background: var(--ink);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .privacy-note { color: var(--muted); font-size: 13px; }
+  .upload-links { border-top: 1px solid var(--line); }
+  .upload-links button { min-height: 40px; font-size: 14px; }
+  .upload-error, .inline-error { font-size: 14px; font-weight: 600; }
+
+  .loading-block {
+    border-radius: 14px;
+    background: var(--ink);
+    color: var(--sky-text);
+  }
+
+  .loading-block p { font-size: 14px; }
+  .loading-block small { color: rgba(255, 247, 236, 0.78); font-size: 12px; }
+  .loading-indicator { border-color: #44403c; border-top-color: var(--gold); }
+
+  /* ---------- Workspace: the heading sits on the sky, the desk is one sheet of paper ---------- */
+
+  .workspace {
+    max-width: 1600px;
+    padding: 28px 16px 32px;
+  }
+
+  .workspace-heading {
+    max-width: none;
+    margin-bottom: 20px;
+    color: var(--sky-text);
+    text-align: left;
+  }
+
+  .workspace-heading h1 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  .workspace-heading p {
+    margin-top: 6px;
+    color: var(--sky-soft);
+    font-size: 14px;
+  }
+
+  .workspace-tools .button {
+    min-height: 40px;
+    border-color: transparent;
+    background: var(--ink);
+    color: var(--sky-text);
+    font-size: 13px;
+  }
+
+  .workspace-tools .button:hover { border-color: transparent; background: #2e2724; }
+  .workspace-tools .button[aria-pressed="true"] { background: var(--gold); color: var(--ink); }
+
+  .export-options {
+    top: 46px;
+    width: 200px;
+    border: 0;
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(28, 25, 23, 0.14), 0 18px 36px -12px rgba(20, 0, 0, 0.55);
+  }
+
+  .export-options button {
+    min-height: 40px;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .export-options button:hover { background: var(--gold-soft); }
+
+  .sample-banner {
+    border: 0;
+    border-radius: 14px;
+    background: var(--ink);
+    color: var(--sky-text);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 8px 6px 16px;
+  }
+
+  .sample-banner .text-button {
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 10px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  .sample-banner .text-button:hover { background: rgba(255, 255, 255, 0.1); color: var(--gold); }
+
+  .desk-grid {
+    overflow: hidden;
+    border: 0;
+    border-radius: 22px;
+    background: var(--white);
+    box-shadow: var(--lift);
+  }
+
+  .review-panel { border-right: 1px solid var(--line); }
+  .todo-panel { border-top: 1px solid var(--line); }
+  .split-handle::after { background: var(--gold); }
+  .split-handle:focus-visible { box-shadow: none; }
+  .split-handle:focus-visible::after { background: var(--red); }
+
+  .panel-header { border-bottom: 1px solid var(--line); }
+
+  .panel-header h2 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  .panel-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel-content { scrollbar-color: #cfc4b2 transparent; }
+
+  /* To-do */
+
+  .progress-meta { color: var(--muted); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .progress-track {
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #efe6d8;
+  }
+
+  .progress-track::-webkit-progress-bar { background: #efe6d8; }
+  .progress-track::-webkit-progress-value { background: var(--red); border-radius: 999px; }
+  .progress-track::-moz-progress-bar { background: var(--red); border-radius: 999px; }
+
+  .todo-panel .topic-title {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .todo-item {
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .todo-square {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+  }
+
+  .todo-item.practiced .todo-square { border-color: var(--ink); background: linear-gradient(90deg, var(--gold) 50%, transparent 50%); }
+  .todo-panel .todo-item-title { font-size: 14px; font-weight: 600; }
+  .todo-source { color: var(--muted); font-size: 12px; }
+
+  .todo-score {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mastered-all { border-radius: 14px; }
+  .mastered-all h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; }
+  .mastered-all p { font-size: 14px; }
+
+  /* Review notes: read like a printed page */
+
+  #review-content { background: var(--white); }
+
+  .notes-document {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    font-family: var(--sans);
+  }
+
+  .notes-document .chapter-heading {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .notes-document .section-heading {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .review-note summary h4 {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .review-note summary::after { color: var(--red); font-weight: 700; }
+
+  .notes-outline {
+    font-size: 15px;
+    color: #3d3834;
+  }
+
+  .notes-outline li::marker { color: var(--red); }
+
+  .review-note .clarification,
+  .clarification {
+    border-left: 0;
+    border-radius: 12px;
+    background: var(--blush);
+  }
+
+  .clarification { font-size: 14px !important; }
+  .review-note .clarification p { font-size: 14px; }
+  .review-note .clarification strong { color: #7a0000; font-size: 12px; }
+  .note-tools .source-label { color: var(--muted); font-size: 12px; }
+  .note-tools .example-button { font-size: 13px; font-weight: 700; }
+  .review-next { color: var(--muted); font-size: 13px; }
+
+  .empty-panel p { color: var(--muted); font-size: 14px; }
+
+  /* Practice */
+
+  .tab-bar {
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tab {
+    min-height: 36px;
+    margin: 0;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .tab:hover { background: var(--paper); color: var(--ink); }
+
+  .tab[aria-selected="true"] {
+    border: 0;
+    background: var(--ink);
+    color: var(--sky-text);
+    font-weight: 700;
+  }
+
+  .tab-count { color: inherit; font-size: 12px; font-variant-numeric: tabular-nums; opacity: 0.8; }
+  .tab[aria-selected="true"] .tab-count { color: var(--gold); opacity: 1; }
+
+  .practice-toolbar {
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .practice-toolbar .text-button { min-height: 32px; font-size: 13px; }
+
+  /* The feed is a tinted tray; each question is a bordered sheet on it, not a floating card. */
+  .practice-feed { background: var(--paper); }
+
+  .question-card {
+    border: 1px solid #e3d9ca;
+    border-radius: 18px;
+    background: var(--white);
+  }
+
+  .question-index { color: var(--red); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  .question-tag {
+    border: 0;
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .question-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .concept-label {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .option {
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    font-size: 15px;
+  }
+
+  .option:hover { border-color: #b9ab95; background: var(--white); }
+  .option:has(input:checked) { border-color: var(--ink); background: var(--gold-soft); }
+  .option:has(input:focus-visible) { outline: 3px solid var(--gold); outline-offset: 2px; box-shadow: 0 0 0 5px var(--ink); }
+  .option input:focus-visible { outline: 0; box-shadow: none; }
+  .option-letter { color: var(--red); font-size: 14px; font-weight: 700; }
+
+  .answer-label { color: var(--ink); font-size: 13px; font-weight: 700; }
+
+  .written-answer {
+    border: 1.5px solid #d3c7b4;
+    border-radius: 12px;
+    background: var(--white);
+    font-size: 15px;
+  }
+
+  .written-answer:focus { border-color: var(--ink); }
+
+  .question-bottom {
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .question-bottom .button { flex: none; min-height: 40px; font-size: 13px; white-space: nowrap; }
+  .question-source { color: var(--muted); font-size: 12px; }
+
+  .feedback {
+    border: 1.5px solid #7fa576;
+    border-left-width: 1.5px;
+    border-radius: 12px;
+    color: var(--ink);
+    font-size: 15px;
+  }
+
+  .feedback.incorrect {
+    border-color: #d79a92;
+    background: var(--blush);
+  }
+
+  .feedback-title { font-size: 15px; font-weight: 700; }
+  .reference-answer { border-top-color: rgba(28, 25, 23, 0.14); }
+  .reference-answer span, .attempt-answer span { color: var(--muted); font-size: 12px; font-weight: 700; }
+
+  .attempt-answer {
+    border-radius: 12px;
+    background: var(--paper);
+    font-size: 14px;
+  }
+
+  .demo-self-review .button { min-height: 40px; font-size: 13px; }
+  .practice-end p { color: var(--muted); font-size: 14px; }
+
+  .workspace-notice { color: var(--sky-soft); font-size: 12px; }
+
+  /* ---------- Settings dialog and toast ---------- */
+
+  dialog {
+    border: 0;
+    border-radius: 22px;
+    background: var(--white);
+    box-shadow: 0 2px 6px rgba(28, 25, 23, 0.2), 0 40px 80px -24px rgba(10, 0, 0, 0.75);
+  }
+
+  dialog::backdrop { background: rgba(24, 6, 4, 0.62); }
+
+  .dialog-header h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  dialog p { color: var(--muted); font-size: 14px; }
+  .field-label { font-size: 14px; font-weight: 700; }
+
+  dialog input[type="password"] {
+    min-height: 46px;
+    border: 1.5px solid #d3c7b4;
+    border-radius: 12px;
+  }
+
+  .field-help { font-size: 12px !important; }
+  .settings-divider { border-top-color: var(--line); }
+  dialog .text-button { min-height: 40px; }
+
+  .toast {
+    border-radius: 14px;
+    background: var(--ink);
+    color: var(--sky-text);
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 18px 36px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (max-width: 720px) {
+    .page-tools {
+      width: calc(100% - 24px);
+      flex-wrap: wrap;
+      padding: 6px 6px 6px 14px;
+      gap: 4px 8px;
+    }
+
+    .page-tools .theme-switch { order: 5; flex: 1 0 100%; }
+    .page-tools .theme-switch button { flex: 1; }
+    .workspace { padding: 20px 12px 24px; }
+    .workspace-heading h1 { font-size: 30px; }
+    .upload-panel { padding: 22px; }
+    .upload-panel h1 { font-size: 30px; }
+    .review-panel { border-right: 0; border-bottom: 1px solid var(--line); }
+    .panel-header h2 { font-size: 20px; }
+  }
+
+  @media print {
+    .workspace-heading { color: black; }
+    .desk-grid { box-shadow: none; }
+  }
+}
+
